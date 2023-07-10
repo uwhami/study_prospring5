@@ -1,7 +1,8 @@
-package com.apress.prospring5.ch3.sec5;
+package com.apress.prospring5.ch3;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import com.apress.prospring5.ch2.decoupled.MessageProvider;
 import com.apress.prospring5.ch2.decoupled.MessageRenderer;
 
 //3-21. ApplicationContext로부터 빈을 얻는 방법(setter-injection)
@@ -19,6 +20,9 @@ public class DeclareSpringComponents {
 		ctx.refresh();
 		MessageRenderer messageRenderer = ctx.getBean("renderer", MessageRenderer.class);
 		messageRenderer.render();
+		
+		MessageProvider messageProvider = ctx.getBean("provider", MessageProvider.class);
+		System.out.println(messageProvider.getMessage());
 		ctx.close();
 
 	}

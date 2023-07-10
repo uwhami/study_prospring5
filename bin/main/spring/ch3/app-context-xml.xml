@@ -2,10 +2,24 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
    	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	   xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org.shema/c"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
 	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	
+	<bean id="renderer"
+		class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
+		p:messageProvider-ref="provider" />
+		<!-- 3-27.property를 p 네임스페이스로 변경함.  > -->
+		<!-- <property name="messageProvider" ref="provider"/> -->
+	<!-- </bean> -->
 
+	<bean id="provider"
+		class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/>
+		
+	<bean id="messageProvider"
+		class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider"
+		c:message="I hope that someone gets my message in a bottle"/> <!-- p네임스페이스와 같이 c네임 스페이스를 이용  -->
+		<!-- 3-30. 다른 빈을 전달하지 않고 단지 문자열만을 전달하므로 ref 대신 value 애트리뷰트를 사용해 생성자 인수의 값을 지정 -->
+		<!-- <constructor-arg value="I hope that someone gets my message in a bottle" /> </beans> -->
 </beans>

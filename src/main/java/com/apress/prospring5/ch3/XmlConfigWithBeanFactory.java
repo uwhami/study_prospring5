@@ -1,8 +1,9 @@
-package com.apress.prospring5.ch3.sec4;
+package com.apress.prospring5.ch3;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.core.io.ClassPathResource;
+
 
 
 //3-12 독립 실행형 자바 어플리케이션에서 원하는 처리를 하기 위해
