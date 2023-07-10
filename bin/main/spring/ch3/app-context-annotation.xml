@@ -16,7 +16,8 @@
 			
 		</context:component-scan>	
 	
-	
+		<bean id="message" class="java.lang.String"
+			c:_0="I hope that someone gets my message in a bottle"/>
 
 </beans>
 
