@@ -18,8 +18,8 @@ public class DeclareSpringComponents {
 		GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 		ctx.load("classpath:spring/ch3/app-context-xml.xml");
 		ctx.refresh();
-		MessageRenderer messageRenderer = ctx.getBean("renderer", MessageRenderer.class);
-		messageRenderer.render();
+//		MessageRenderer messageRenderer = ctx.getBean("renderer", MessageRenderer.class);
+//		messageRenderer.render();
 		
 		MessageProvider messageProvider = ctx.getBean("provider", MessageProvider.class);
 		System.out.println(messageProvider.getMessage());
