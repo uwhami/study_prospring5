@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 @Service("singer")
 public class Singer {
 
+	/*
+	 * inspirationbean 필드는 private 이지만 IoC 컨테이너가 의존성을 주입하는데 문제가 없다.
+	 * 스프링 컨테이너가 리플렉션을 이용해 필요한 의존성을 주입하기 때문이다.
+	 */
 	@Autowired
 	private Inspiration inspirationBean;
 	
-	public void main(String[] args) {
+	public void sing() {
 		System.out.println("... " + inspirationBean.getLyric());
 	}
 
