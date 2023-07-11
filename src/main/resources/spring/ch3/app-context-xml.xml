@@ -21,6 +21,16 @@
 			class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider"
 			c:message="I hope that someone gets my message in a bottle" />
 		
+		
+		<bean id="constructorConfusion"
+			class="com.apress.prospring5.ch3.xml.ConstructorConfusion">
+			<!-- <constructor-arg> type이 String 으로 된다. -->
+			<constructor-arg type="int">
+				<value>90</value>
+			</constructor-arg>
+		</bean>
+		
+		
 	<!-- <bean id="messageProvider"
 		class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider"
 		c:message="I hope that someone gets my message in a bottle"/> --> <!-- p네임스페이스와 같이 c네임 스페이스를 이용  -->
