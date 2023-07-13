@@ -49,5 +49,17 @@
 			p:programmer="#{injectSimpleConfig.programmer}"
 			p:ageInSeconds="#{injectSimpleConfig.ageInSeconds}" />
 			
+			
+		<!-- 3-54. 명명규칙은 3장의 뒷부분에서 자세하게 알아볼 예정. -->	
+		<bean id="oracle" name="wisworm"
+			class="com.apress.prospring5.ch3.BookwormOracle" />
+			
+		<bean id="injectRef"
+			class="com.apress.prospring5.ch3.xml.InjectRef"	>
+			<property name="oracle">
+				<ref bean="wisworm" />
+			</property>			
+		</bean>	
+			
 </beans>
 
