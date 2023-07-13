@@ -36,4 +36,18 @@
 		c:message="I hope that someone gets my message in a bottle"/> --> <!-- p네임스페이스와 같이 c네임 스페이스를 이용  -->
 		<!-- 3-30. 다른 빈을 전달하지 않고 단지 문자열만을 전달하므로 ref 대신 value 애트리뷰트를 사용해 생성자 인수의 값을 지정 -->
 		<!-- <constructor-arg value="I hope that someone gets my message in a bottle" /> </beans> -->
+		
+		<!-- 3-48. SpEL 을 이요해 값을 주입하는 구성 파일. -->
+		<bean id="injectSimpleConfig"
+			class="com.apress.prospring5.ch3.annotated.InjectSimpleConfig" />
+			
+		<bean id="injectSimpleSpel"
+			class="com.apress.prospring5.ch3.xml.InjectSimpleSpel"
+			p:name="#{injectSimpleConfig.name}"
+			p:age="#{injectSimpleConfig.age + 1}"
+			p:height="#{injectSimpleConfig.height}"
+			p:programmer="#{injectSimpleConfig.programmer}"
+			p:ageInSeconds="#{injectSimpleConfig.ageInSeconds}" />
+			
 </beans>
+
