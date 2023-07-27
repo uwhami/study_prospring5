@@ -12,6 +12,8 @@
 		<bean id="song1" class="com.apress.prospring5.ch3.Song"
 			p:title-ref="parentTitle" />
 		
+		
+		<!-- child-context.xml 파일에 childTitle이 없으면 부모한테서 가지고 오지만, 동일한 파일에 있으므로 동일한 파일에서 가지고 온다. -->
 		<bean id="song2" class="com.apress.prospring5.ch3.Song"
 			p:title-ref="childTitle" />
 			
@@ -21,8 +23,7 @@
 			</property>
 		</bean>
 		
-		<!-- <bean id="childTitle" class="java.lang.String" c:_0="해당 값이 없습니다. (chile-xml)" />		 -->
-	
-			
+		<bean id="childTitle" class="java.lang.String" c:_0="해당 값이 없습니다. (chile-context)" />
+		
 </beans>
 
