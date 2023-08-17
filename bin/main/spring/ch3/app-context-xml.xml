@@ -60,6 +60,44 @@
 				<ref bean="wisworm" />
 			</property>			
 		</bean>	
+		
+		<!-- 3-60. CollectionInjection 클래스가 노출한 네 개의 수정자 모두에 값을 주입 -->
+		<bean id="lyricHolder"
+			class="com.apress.prospring5.ch3.xml.LyricHolder" />
+			
+		<bean id="injectCollection"
+			class="com.apress.prospring5.ch3.xml.CollectionInjection">
+			<property name="map">
+				<map>
+					<entry key="someValue">
+						<value>It's a Friday, we finally made it</value>
+					</entry>
+					<entry key="someBean">
+						<ref bean="lyricHolder" />
+					</entry>
+					<entry key="someValue2" value="Today is Thursday. I'm going to meet my friends tomorrow." />
+					<entry key="someBean2" value-ref="lyricHolder" />
+				</map>
+			</property>	
+			<property name="props">
+				<props>
+					<prop key="firstName">John</prop>
+					<prop key="secondName">Mayer</prop>
+				</props>
+			</property>
+			<property name="set">
+				<set>
+					<value>I can't believe I get to see your fase</value>
+					<ref bean="lyricHolder" />
+				</set>
+			</property>
+			<property name="list">
+				<list>
+					<value>You've bean working and I've been waiting</value>
+					<ref bean="lyricHolder" />
+				</list>
+			</property>
+		</bean>
 			
 </beans>
 
