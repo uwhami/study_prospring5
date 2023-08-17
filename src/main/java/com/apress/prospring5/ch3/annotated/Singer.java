@@ -1,11 +1,15 @@
 package com.apress.prospring5.ch3.annotated;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 //3-40. 필드 주입을 이용한 빈 클래스(field-injection)
 @Service("singer")
+@Component("singer") //3-75에서 추가
+@Scope("prototype") //3-75에서 추가
 public class Singer {
 
 	/*
@@ -18,5 +22,8 @@ public class Singer {
 	public void sing() {
 		System.out.println("... " + inspirationBean.getLyric());
 	}
+
+	//3-75에서 추가
+	private String lyric = "I played a quick game of chess with the salt and pepper shaker";
 
 }

@@ -59,6 +59,7 @@
 			<property name="oracle">
 				<ref bean="wisworm" />
 			</property>			
+
 		</bean>	
 		
 		<!-- 3-60. CollectionInjection 클래스가 노출한 네 개의 수정자 모두에 값을 주입 -->
@@ -98,6 +99,18 @@
 				</list>
 			</property>
 		</bean>
-			
+  
+
+		<!-- 3-73. 메서드 주입 사용하기(3.5.4) -->
+		<bean id="singer" class="com.apress.prospring5.ch3.Singer" scope="prototype" />
+
+		<bean id="abstractLookupBean" class="com.apress.prospring5.ch3.AbstractLookupDemoBean">
+			<lookup-method name="getMySinger" bean="singer" />
+		</bean>
+
+		<bean id="standardLookupBean" class="com.apress.prospring5.ch3.StandardLookupDemoBean">
+			<property name="mySinger" ref="singer" />
+		</bean>
+
 </beans>
 
