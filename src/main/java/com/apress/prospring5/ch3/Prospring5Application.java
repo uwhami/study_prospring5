@@ -1,4 +1,4 @@
-package com.apress.prospring5;
+package com.apress.prospring5.ch3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
