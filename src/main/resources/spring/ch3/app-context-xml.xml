@@ -112,5 +112,17 @@
 			<property name="mySinger" ref="singer" />
 		</bean>
 
+
+		<!-- 3.82. ReplacementTarget 타입인 두 빈을 정의하는 구성 파일 -->
+		<bean id="methodReplacer" class="com.apress.prospring5.ch3.FormatMessageReplacer" />
+
+		<bean id="replacementTarget" class="com.apress.prospring5.ch3.ReplacementTarget">
+			<replaced-method name="formatMessage" replacer="methodReplacer">
+					<arg-type>String</arg-type>
+			</replaced-method>
+		</bean>
+
+		<bean id="standardTarget" class="com.apress.prospring5.ch3.ReplacementTarget" />
+
 </beans>
 
