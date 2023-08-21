@@ -42,7 +42,6 @@ public class BeanNameAliasing {
         System.out.println("ApplicationContext . getAliases : " +  apc.getAliases("johnny")[0]);
 
 
-
         ctx.close();
     }
 }
