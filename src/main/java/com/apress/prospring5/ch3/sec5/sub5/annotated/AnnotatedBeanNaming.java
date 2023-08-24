@@ -1,6 +1,5 @@
-package com.apress.prospring5.ch3.sec5.annotated;
+package com.apress.prospring5.ch3.sec5.sub5.annotated;
 
-import com.apress.prospring5.ch3.sec5.annotated.Singer;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Arrays;
@@ -15,8 +14,8 @@ public class AnnotatedBeanNaming {
         Map<String, Singer> beans = ctx.getBeansOfType(Singer.class);
         System.out.println("===========beans.size() : " + beans.size());
         beans.entrySet().stream().forEach(b -> System.out.println(
-                "id: " + b.getKey() + "\n Alias : "
-                        + Arrays.toString(ctx.getAliases(b.getKey())) + "\n"
+                "===============id: " + b.getKey() +
+                        "\n ===============Aliases : "  + Arrays.toString(ctx.getAliases(b.getKey())) + "\n"
         ));
         ctx.close();
     }

@@ -14,4 +14,11 @@
 	<bean class="java.lang.String"/>
 	<bean class="java.lang.String"/>
 
+	<!-- 예제 3-106. depeonds-on을 사용해 빈 의존성과 관련된 추가 정보를 스프링에게 제공함. 빈 생성시 생성순서를 정하게 함.
+	 				이는 Singer 빈이 ApplicationContextAware 인터페이스를 구현한다면 가능함. -->
+	<bean id="johnMayer" class="com.apress.prospring5.ch3.sec5.sub7.xml.Singer"
+		  depends-on="gopher"/>
+	<bean id="gopher" class="com.apress.prospring5.ch3.sec5.sub7.xml.Guitar" />
+	<bean id="johnMayer2" class="com.apress.prospring5.ch3.sec5.sub7.xml.Singer"
+		  depends-on="gopher"/>
 </beans>
