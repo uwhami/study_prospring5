@@ -124,5 +124,10 @@
 
 		<bean id="standardTarget" class="com.apress.prospring5.ch3.ReplacementTarget" />
 
+
+		<!-- 3-104. 인스턴스 생성 방식을 싱글턴에서 비싱글턴으로 변경. -->
+		<bean id="nonSingleton" class="com.apress.prospring5.ch3.sec6.annotated.Singer"
+			  scope="prototype" c:_0="John Mayer" />
+
 </beans>
 
