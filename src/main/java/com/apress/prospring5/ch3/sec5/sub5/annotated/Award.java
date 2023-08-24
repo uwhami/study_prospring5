@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch3.sec5.annotated;
+package com.apress.prospring5.ch3.sec5.sub5.annotated;
 
 import org.springframework.core.annotation.AliasFor;
 

@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch3.sec7.annotated;
+package com.apress.prospring5.ch3.sec5.sub7.annotated;
 
 import org.springframework.stereotype.Component;
 

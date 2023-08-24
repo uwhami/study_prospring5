@@ -1,6 +1,6 @@
-package com.apress.prospring5.ch3.sec5.config;
+package com.apress.prospring5.ch3.sec5.sub5.config;
 
-import com.apress.prospring5.ch3.sec5.annotated.Singer;
+import com.apress.prospring5.ch3.sec5.sub5.annotated.Singer;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

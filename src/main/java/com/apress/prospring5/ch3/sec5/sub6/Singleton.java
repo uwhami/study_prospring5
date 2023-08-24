@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch3.sec6;
+package com.apress.prospring5.ch3.sec5.sub6;
 
 /*
  * 예제 3-103. 자바에서 싱글턴 패턴의 일반적인 구현 예제. (싱글턴 인스턴스(단일 인스턴스를 갖는 객체)와 싱글턴 패턴이 있음)

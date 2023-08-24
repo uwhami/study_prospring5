@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch3.sec7.xml;
+package com.apress.prospring5.ch3.sec5.sub7.xml;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

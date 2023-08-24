@@ -1,6 +1,5 @@
-package com.apress.prospring5.ch3.sec7.annotated;
+package com.apress.prospring5.ch3.sec5.sub7.annotated;
 
-import com.apress.prospring5.ch3.sec7.annotated.Singer;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class DependsOnDemo {

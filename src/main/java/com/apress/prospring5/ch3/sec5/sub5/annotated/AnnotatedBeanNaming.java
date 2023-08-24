@@ -1,6 +1,5 @@
-package com.apress.prospring5.ch3.sec5.annotated;
+package com.apress.prospring5.ch3.sec5.sub5.annotated;
 
-import com.apress.prospring5.ch3.sec5.annotated.Singer;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Arrays;
