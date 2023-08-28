@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd"
+							default-lazy-init="true" default-init-method="init">
+
+	<!-- default-lazy-init="true" : *스프링은 처음부터 모든 빈을 초기화 하지 않고
+	 애플리케이션이 스프링에게 빈을 요청할 떄만 해당 빈을 초기화 하는 설정!!*-->
+
+	<!-- 4-2.Singer 빈 및 초기화 콜백 메서드 구성 -->
+	<!-- init-method="init"은 스프링이 빈 구성을 마치자 마자 init() 메서드를 호출함.
+		각각 bean에 설정할 수도 있고 위에 전체를 deault-init-methid 로 설정할 수도 있다. -->
+	<bean id="singerOne" class="com.apress.prospring5.ch4.sec3.Singer"
+		  	p:name="John Mayer" p:age="39" />
+
+	<bean id="singerTwo" class="com.apress.prospring5.ch4.sec3.Singer"
+		   p:age="72" />
+
+	<bean id="singerThree" class="com.apress.prospring5.ch4.sec3.Singer"
+		    p:name="John Butler" />
+
+</beans>
+

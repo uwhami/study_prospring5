@@ -129,5 +129,11 @@
 		<bean id="nonSingleton" class="com.apress.prospring5.ch3.sec5.sub6.annotated.Singer"
 			  scope="prototype" c:_0="John Mayer" />
 
+		<!--3-127. 3.7 빈 상속 결정하기" -->
+		<bean id="parent" class="com.apress.prospring5.ch3.sec7.xml.Singer"
+			  p:name="John Mayer" p:age="39" />
+
+		<bean id="child" class="com.apress.prospring5.ch3.sec7.xml.Singer"
+			  parent="parent" p:age="0" />
 </beans>
 
