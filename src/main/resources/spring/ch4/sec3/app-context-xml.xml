@@ -4,8 +4,11 @@
    	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    	   xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
-	   					   http://www.springframework.org/schema/beans/spring-beans.xsd"
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context.xsd"
 							default-lazy-init="true" default-init-method="init">
 
 	<!-- default-lazy-init="true" : *스프링은 처음부터 모든 빈을 초기화 하지 않고
@@ -23,7 +26,8 @@
 	<bean id="singerThree" class="com.apress.prospring5.ch4.sec3.Singer"
 		    p:name="John Butler" />
 
-	<!-- 4.3.1 빈 생성시 메서드 실행하기 파일과 비슷하나 init-method 애트리뷰트가 빠졌다.
+	<!-- 4.3.2 인터페이스를 이용한 빈 초기화 메서드 호출
+			   4.3.1 빈 생성시 메서드 실행하기 파일과 비슷하나 init-method 애트리뷰트가 빠졌다.
 	 	  	   InitalizingBean 인터페이스에서 스프링이 초기화 콜백으로 어느 메서드를 호출해야하는지 안다.-->
 	<bean id="singleWithImplOne" class="com.apress.prospring5.ch4.sec3.SingerWithInterface"
 		  p:name="John Mayer" p:age="39" />
@@ -33,5 +37,19 @@
 
 	<bean id="singleWithImplThree" class="com.apress.prospring5.ch4.sec3.SingerWithInterface"
 		  p:name="John Butler" />
+
+
+	<!-- 4.3.3 애너테이션을 이용한 빈 초기화 메서드 호출 -->
+	<context:annotation-config />
+	<bean id="singerWithJRS250One" class="com.apress.prospring5.ch4.sec3.SingerWithJSR250"
+		  p:name="John Mayer" p:age="39" />
+
+	<bean id="singerWithJRS250Two" class="com.apress.prospring5.ch4.sec3.SingerWithJSR250"
+		  p:age="72" />
+
+	<bean id="singerWithJRS250Three" class="com.apress.prospring5.ch4.sec3.SingerWithJSR250"
+		  p:name="John Butler" />
+
+
 </beans>
 
