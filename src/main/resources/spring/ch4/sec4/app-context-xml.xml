@@ -11,11 +11,16 @@
 						   http://www.springframework.org/schema/context/spring-context.xsd"
 							default-lazy-init="true" default-init-method="init">
 
+	<!-- 4.4.1 빈이 소멸될때 메서드를 이용하기. -->
 	<bean id="destructiveBean" class="com.apress.prospring5.ch4.sec4.DestructiveBean"
 		  destroy-method="destroy"
 		  init-method="afterPropertiesSet"
 		  p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt" />
 
+
+	<!-- 4.4.2 빈이 소멸될때 인터페이스를 구현하기. -->
+	<bean id="destructiveBeanWithInterface" class="com.apress.prospring5.ch4.sec4.DestructiveBeanWithInterface"
+		  p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt" />
 
 
 
