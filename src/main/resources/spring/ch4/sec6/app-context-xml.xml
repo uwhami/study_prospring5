@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context.xsd"
+							default-lazy-init="true" default-init-method="init">
+
+	<!-- 4.6.1, 4-26 MessageDigest 타입 빈 두 개를 생성하는 구성. -->
+	<bean id="shaDigest" class="com.apress.prospring5.ch4.sec6.MessageDigestFactoryBean"
+		p:algorithmName="SHA1"/>
+
+	<bean id="defaultDigest" class="com.apress.prospring5.ch4.sec6.MessageDigestFactoryBean" />
+
+	<bean id="digester" class="com.apress.prospring5.ch4.sec6.MessageDigester"
+		  p:digest1-ref="shaDigest"
+		  p:digest2-ref="defaultDigest"/>
+
+	<!-- 4.6.3, 스프링 외부 팩터리 클래스 -->
+	<bean id="shaDigestFactory" class="com.apress.prospring5.ch4.sec6.MessageDigestFactory"
+		  p:algorithmName="SHA1"/>
+
+	<bean id="defaultDigestFactory" class="com.apress.prospring5.ch4.sec6.MessageDigestFactory" />
+
+	<bean id="shaDigestF"
+		  factory-bean="shaDigestFactory"
+		  factory-method="createInstance" />
+
+	<bean id="defaultDigestF"
+		  factory-bean="defaultDigestFactory"
+		  factory-method="createInstance" />
+
+	<bean id="digesterF" class="com.apress.prospring5.ch4.sec6.MessageDigester"
+		  p:digest1-ref="shaDigestF"
+		  p:digest2-ref="defaultDigestF"/>
+
+</beans>
+
