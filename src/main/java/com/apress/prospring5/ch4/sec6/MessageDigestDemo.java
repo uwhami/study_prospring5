@@ -14,6 +14,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
  * FactoryBean은 new 연산자로 인스턴스를 생성할 수 없는 클래스를 다룰때 완벽한 솔루션이다.
  * 자바 클래스로 구성을 할 때는 FactoryBean 사용방법에 차이가 있다.
  * 컴파일러가 적절한 타입으로 프로퍼티를 설정하도록 제한한다.
+ * 따라서 getObject() 메서드를 명시적으로 호출해야 한다.
  *
  * 다음예제부터 살펴보자. (MessageDigesterConfigDemo)
  */
