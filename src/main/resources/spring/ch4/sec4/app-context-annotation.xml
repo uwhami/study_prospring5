@@ -17,5 +17,8 @@
 	<bean id="destructiveBeanWithJSR250" class="com.apress.prospring5.ch4.sec4.DestructiveBeanWithJSR250"
 		  p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt" />
 
+	<bean id="destructiveBeanWithHook" class="com.apress.prospring5.ch4.sec4.DestructiveBeanWithHook"
+		  p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt" />
+
 </beans>
 
