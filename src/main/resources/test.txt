@@ -1,0 +1,1 @@
+This file is essential for inputStream Property-Editors test.(ch4-sec7)
