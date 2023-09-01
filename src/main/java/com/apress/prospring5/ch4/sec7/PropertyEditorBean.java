@@ -24,6 +24,7 @@ import java.util.regex.Pattern;
  * 올바른 타입으로 변환했음을 알 수 있다.(p.256)
  *
  * InputStream은 에러가 나서 주석처리했다ㅠ
+ * --> resource 파일 밑에 test.txt 파일 만들어서 에러 해결.
  *
  */
 public class PropertyEditorBean {
