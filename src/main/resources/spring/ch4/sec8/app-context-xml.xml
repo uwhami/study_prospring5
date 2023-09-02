@@ -25,5 +25,10 @@
 		<value>labels</value>
 	</util:list>
 
+	<!--4.8.2 애플리케이션 이벤트 - ex 4.46 -->
+	<bean id="publisher" class="com.apress.prospring5.ch4.sec8.Publisher" />
+
+	<bean id="messageEventListener" class="com.apress.prospring5.ch4.sec8.MessageEventListener" />
+
 </beans>
 
