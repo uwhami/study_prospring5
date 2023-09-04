@@ -8,9 +8,12 @@ public class ConfigurableMessageProvider implements MessageProvider{
 	
 	private String message;
 	
-	//public ConfigurableMessageProvider() {}
+	public ConfigurableMessageProvider() {
+		System.out.println("==========Call ConfigurableMessageProvider Constructor.");
+	}
 	
 	public ConfigurableMessageProvider(String message) {
+		System.out.println("==========Call ConfigurableMessageProvider Constructor with string message.");
 		this.message = message;
 	}
 

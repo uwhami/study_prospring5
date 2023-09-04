@@ -27,7 +27,7 @@
 		  p:bytes="John Mayer"
 		  p:cls="java.lang.String"
 		  p:trueOrFalse="true"
-		  p:stream="test.txt"
+		  p:stream="C:\Users\user\AppData\Local\Temp\test.txt"
 		  p:stringList-ref="stringList"
 		  p:floatValue="123.45678"
 		  p:date="2018/03/13"
