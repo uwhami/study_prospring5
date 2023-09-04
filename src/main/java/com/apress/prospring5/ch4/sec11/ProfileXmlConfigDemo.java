@@ -10,7 +10,7 @@ import java.util.List;
  *
  * JVM인수로 profile 애트리뷰트에 따라 빈 인스턴스를 생성
  * VM options에서 -Dspring.profiles.active="kindergarten" 또는 -Dspring.profiles.active="highschool" 적용함.
- * XML파일에 profile을 설정함.
+ * XML 파일에 profile 을 설정함.
  */
 public class ProfileXmlConfigDemo {
     public static void main(String[] args) {
