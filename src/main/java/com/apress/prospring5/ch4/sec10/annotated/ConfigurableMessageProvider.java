@@ -16,6 +16,11 @@ public class ConfigurableMessageProvider implements MessageProvider {
         this.message = message;
     }
 
+    //xml 파일에서 p:message 설정을 하려면 setter 필요.
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String getMessage() {
         return this.message;
