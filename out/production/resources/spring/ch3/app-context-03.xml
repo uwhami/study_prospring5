@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="fooOne" class="com.apress.prospring5.ch3.sec6.xml.Foo"/>
+	<bean id="barOne" class="com.apress.prospring5.ch3.sec6.xml.Bar"/>
+
+	<!-- lazy-init 속성은 ture로 설정되어 최초 시작시점이 아니라 처음 요청되었을때만 빈 인스턴스를 생성해 결과를 테스트 프로그램의 올바른 위치에 출력한다. -->
+	<bean id="targetByName" autowire="byName"
+		  	class="com.apress.prospring5.ch3.sec6.xml.Target" lazy-init="true" />
+
+	<bean id="targetByType" autowire="byType"
+		  class="com.apress.prospring5.ch3.sec6.xml.Target" lazy-init="true" />
+
+	<bean id="targetConstructor" autowire="constructor"
+		  class="com.apress.prospring5.ch3.sec6.xml.Target" lazy-init="true" />
+</beans>
