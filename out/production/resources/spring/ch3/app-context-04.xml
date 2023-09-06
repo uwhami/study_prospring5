@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 예제 3-117. 빈이 오직 2개일 때, 빈 정의에서 primary 애트리뷰트 값을 true로 설정해 스프링이 자동와이어링을 할때 먼저 사용하게 하는 것. -->
+	<bean id="fooOne" class="com.apress.prospring5.ch3.sec6.xml.complicated.FooImpl1" primary="true"/>
+	<bean id="fooTwo" class="com.apress.prospring5.ch3.sec6.xml.complicated.FooImpl2"/>
+
+	<bean id="bar" class="com.apress.prospring5.ch3.sec6.xml.Bar" />
+
+	<!-- lazy-init=true면, getBean을 불렀을때 생성되고, false면 부르기 전에 런타임시에 생성됨-->
+	<bean id="targetByType" autowire="byType"
+		  class="com.apress.prospring5.ch3.sec6.xml.complicated.CTarget" lazy-init="true" />
+
+
+
+</beans>

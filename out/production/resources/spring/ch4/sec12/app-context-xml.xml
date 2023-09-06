@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/context
+						   http://www.springframework.org/schema/context/spring-context.xsd
+						   http://www.springframework.org/schema/util
+						   http://www.springframework.org/schema/util/spring-util.xsd"
+							>
+
+	<!-- local-override를 true로 주면, JVM 프로퍼티보다 application.properties에 파일에 있는 프로퍼티를 우선으로 읽어온다. -->
+	<context:property-placeholder local-override="true"
+		location="classpath:spring/ch4/sec12/application.properties" />
+
+	<bean id="appProperty" class="com.apress.prospring5.ch4.sec12.AppProperty"
+		  p:applicationHome="${application.home}"
+		  p:userHome="${user.home}" />
+
+</beans>
+

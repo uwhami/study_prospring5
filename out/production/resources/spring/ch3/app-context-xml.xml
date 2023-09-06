@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   	   xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- <bean id="renderer"
+		class="com.apress.prospring5.ch2.decoupled.StandardOutMessageRenderer"
+		p:messageProvider-ref="provider" /> -->
+		<!-- 3-27.property를 p 네임스페이스로 변경함.  > -->
+		<!-- <property name="messageProvider" ref="provider"/> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="provider"
+		class="com.apress.prospring5.ch2.decoupled.HelloWorldMessageProvider"/> -->
+		
+		<bean id="provider"
+			class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider"
+			c:message="I hope that someone gets my message in a bottle" />
+		
+		
+		<bean id="constructorConfusion"
+			class="com.apress.prospring5.ch3.xml.ConstructorConfusion">
+			<!-- <constructor-arg> type이 String 으로 된다. -->
+			<constructor-arg type="int">
+				<value>90</value>
+			</constructor-arg>
+		</bean>
+		
+		
+	<!-- <bean id="messageProvider"
+		class="com.apress.prospring5.ch3.xml.ConfigurableMessageProvider"
+		c:message="I hope that someone gets my message in a bottle"/> --> <!-- p네임스페이스와 같이 c네임 스페이스를 이용  -->
+		<!-- 3-30. 다른 빈을 전달하지 않고 단지 문자열만을 전달하므로 ref 대신 value 애트리뷰트를 사용해 생성자 인수의 값을 지정 -->
+		<!-- <constructor-arg value="I hope that someone gets my message in a bottle" /> </beans> -->
+		
+		<!-- 3-48. SpEL 을 이요해 값을 주입하는 구성 파일. -->
+		<bean id="injectSimpleConfig"
+			class="com.apress.prospring5.ch3.annotated.InjectSimpleConfig" />
+			
+		<bean id="injectSimpleSpel"
+			class="com.apress.prospring5.ch3.xml.InjectSimpleSpel"
+			p:name="#{injectSimpleConfig.name}"
+			p:age="#{injectSimpleConfig.age + 1}"
+			p:height="#{injectSimpleConfig.height}"
+			p:programmer="#{injectSimpleConfig.programmer}"
+			p:ageInSeconds="#{injectSimpleConfig.ageInSeconds}" />
+			
+			
+		<!-- 3-54. 명명규칙은 3장의 뒷부분에서 자세하게 알아볼 예정. -->	
+		<bean id="oracle" name="wisworm"
+			class="com.apress.prospring5.ch3.BookwormOracle" />
+			
+		<bean id="injectRef"
+			class="com.apress.prospring5.ch3.xml.InjectRef"	>
+			<property name="oracle">
+				<ref bean="wisworm" />
+			</property>			
+
+		</bean>	
+		
+		<!-- 3-60. CollectionInjection 클래스가 노출한 네 개의 수정자 모두에 값을 주입 -->
+		<bean id="lyricHolder"
+			class="com.apress.prospring5.ch3.xml.LyricHolder" />
+			
+		<bean id="injectCollection"
+			class="com.apress.prospring5.ch3.xml.CollectionInjection">
+			<property name="map">
+				<map>
+					<entry key="someValue">
+						<value>It's a Friday, we finally made it</value>
+					</entry>
+					<entry key="someBean">
+						<ref bean="lyricHolder" />
+					</entry>
+					<entry key="someValue2" value="Today is Thursday. I'm going to meet my friends tomorrow." />
+					<entry key="someBean2" value-ref="lyricHolder" />
+				</map>
+			</property>	
+			<property name="props">
+				<props>
+					<prop key="firstName">John</prop>
+					<prop key="secondName">Mayer</prop>
+				</props>
+			</property>
+			<property name="set">
+				<set>
+					<value>I can't believe I get to see your fase</value>
+					<ref bean="lyricHolder" />
+				</set>
+			</property>
+			<property name="list">
+				<list>
+					<value>You've bean working and I've been waiting</value>
+					<ref bean="lyricHolder" />
+				</list>
+			</property>
+		</bean>
+  
+
+		<!-- 3-73. 메서드 주입 사용하기(3.5.4) -->
+		<bean id="singer" class="com.apress.prospring5.ch3.Singer" scope="prototype" />
+
+		<bean id="abstractLookupBean" class="com.apress.prospring5.ch3.AbstractLookupDemoBean">
+			<lookup-method name="getMySinger" bean="singer" />
+		</bean>
+
+		<bean id="standardLookupBean" class="com.apress.prospring5.ch3.StandardLookupDemoBean">
+			<property name="mySinger" ref="singer" />
+		</bean>
+
+
+		<!-- 3.82. ReplacementTarget 타입인 두 빈을 정의하는 구성 파일 -->
+		<bean id="methodReplacer" class="com.apress.prospring5.ch3.FormatMessageReplacer" />
+
+		<bean id="replacementTarget" class="com.apress.prospring5.ch3.ReplacementTarget">
+			<replaced-method name="formatMessage" replacer="methodReplacer">
+					<arg-type>String</arg-type>
+			</replaced-method>
+		</bean>
+
+		<bean id="standardTarget" class="com.apress.prospring5.ch3.ReplacementTarget" />
+
+
+		<!-- 3-104. 인스턴스 생성 방식을 싱글턴에서 비싱글턴으로 변경. -->
+		<bean id="nonSingleton" class="com.apress.prospring5.ch3.sec5.sub6.annotated.Singer"
+			  scope="prototype" c:_0="John Mayer" />
+
+		<!--3-127. 3.7 빈 상속 결정하기" -->
+		<bean id="parent" class="com.apress.prospring5.ch3.sec7.xml.Singer"
+			  p:name="John Mayer" p:age="39" />
+
+		<bean id="child" class="com.apress.prospring5.ch3.sec7.xml.Singer"
+			  parent="parent" p:age="0" />
+</beans>
+
