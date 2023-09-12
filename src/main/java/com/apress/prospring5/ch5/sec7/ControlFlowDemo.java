@@ -7,6 +7,12 @@ import org.springframework.aop.support.ControlFlowPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.security.core.parameters.P;
 
+/**
+ * 5.7.1 제어 흐름 포인트컷 사용하기.
+ *
+ * 제어 흐름 포인트컷은 다른 개체의 컨텍스트에서 실행될 때만 객체를 선택적으로 어드바이스를 적용할 수 있어 매우 유용하다.
+ * 하지만 다른 포인트컷에 비해 제어 흐름 포인트컷을 사용하면 상당한 성능 저하가 발생한다.
+ */
 public class ControlFlowDemo {
 
     public void run(){
