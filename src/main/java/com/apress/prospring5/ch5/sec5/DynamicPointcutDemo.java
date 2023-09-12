@@ -39,5 +39,7 @@ public class DynamicPointcutDemo {
         proxy.bar();
 
         proxy.foo(50);
+
+        proxy.bar();
     }
 }
