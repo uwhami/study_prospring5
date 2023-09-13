@@ -13,7 +13,7 @@ public class GrammyGuitarist implements Singer {
 
     @Override
     public void sing() {
-        System.out.println("==========sing: Grvity is working against me and gravity wants to bring me down");
+        System.out.println("==========sing: Gravity is working against me and gravity wants to bring me down");
     }
 
     public void sing(Guitar guitar){

@@ -10,6 +10,7 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
  */
 public class ProxyPerfTest {
 
+    // 표준 CGLIB 프록시
     public static void runCglibTests(Advisor advisor, SimpleBean target){
         ProxyFactory pf = new ProxyFactory();
         pf.setProxyTargetClass(true);
@@ -21,6 +22,8 @@ public class ProxyPerfTest {
         test(proxy);
     }
 
+    // 고정 어드바이스 체인이 있는 CGLIB 프록시(즉, ProxyFactory가 간접적으로 상속하는 ProxyConfig 클래스의 setFrozen() 메서드를 호출해
+    // 프록시를 고정하면 CGLIB는 추가 최적화를 수행하지만 추가 어드바이스 변경은 허용되지 않는다.)
     public static void runCglibFrozenTests(Advisor advisor, SimpleBean target){
         ProxyFactory pf = new ProxyFactory();
         pf.setProxyTargetClass(true);
@@ -33,6 +36,7 @@ public class ProxyPerfTest {
         test(proxy);
     }
 
+    // JDK 프록시.
     public static void runJdkTests(Advisor advisor, SimpleBean target){
         ProxyFactory pf = new ProxyFactory();
         pf.setTarget(target);
