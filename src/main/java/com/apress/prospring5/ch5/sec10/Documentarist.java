@@ -2,7 +2,7 @@ package com.apress.prospring5.ch5.sec10;
 
 public class Documentarist {
 
-    private GrammyGuitarist guitarist;
+    GrammyGuitarist guitarist;
 
     public void execute(){
         guitarist.sing();

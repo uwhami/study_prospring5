@@ -1,5 +1,6 @@
-package com.apress.prospring5.ch5.sec8;
+package com.apress.prospring5.ch5.sec8.introduction;
 
+import com.apress.prospring5.ch5.sec8.IsModifiedMixin;
 import org.springframework.aop.support.DefaultIntroductionAdvisor;
 
 /**

@@ -6,7 +6,7 @@ package com.apress.prospring5.ch5.sec10;
 public class GrammyGuitarist {
 
     public void sing() {
-        System.out.println("==========sing: Gravity is working against me ㅁnd gravity wants to bring me down");
+        System.out.println("==========sing: Gravity is working against me and gravity wants to bring me down");
     }
 
     public void sing(Guitar guitar) {

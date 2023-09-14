@@ -1,7 +1,7 @@
 package com.apress.prospring5.ch5.sec10;
 
 public class Guitar {
-    private String brand =" Martin";
+    private String brand ="Martin";
 
     public String play(){
         return "G C G C Am D7";
