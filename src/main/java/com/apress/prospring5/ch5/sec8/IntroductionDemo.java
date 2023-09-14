@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch5.sec8;
 
 import com.apress.prospring5.ch2.common.Contact;
+import com.apress.prospring5.ch5.sec8.introduction.IsModifiedAdvisor;
 import org.springframework.aop.IntroductionAdvisor;
 import org.springframework.aop.framework.ProxyFactory;
 
