@@ -2,7 +2,10 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.12'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'io.freefair.aspectj' version "5.1.1"
 }
+
+
 
 group = 'com.apress'
 version = '0.0.1-SNAPSHOT'
@@ -14,10 +17,17 @@ configurations {
 	}
 }
 
+
+
 repositories {
 	mavenCentral()
 }
-apply plugin: 'groovy'
+
+project.ext {
+	aspectjVersion = '1.9.3'
+}
+
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -36,6 +46,7 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
 	compileOnly group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.17', ext: 'pom'
 	//compile 'org.codehaus.groovy:groovy-all:3.0.16'
+	implementation "org.aspectj:aspectjrt:1.9.6"
 }
 
 
@@ -43,5 +54,7 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
 
 
