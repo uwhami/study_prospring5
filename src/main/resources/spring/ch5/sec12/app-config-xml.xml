@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd"
+							>
+
+	<!-- 예제 5-89 AspectJ 애스펙트 구성 -->
+	<!-- factory-method 애트리뷰트는 기존 패터리 패턴을 따르는 클래스가 스프링과 완벽하게 연동하도록 하는 애트리뷰트이다. -->
+	<bean id="aspect" class="com.apress.prospring5.ch5.sec12.MessageWrapper"
+		factory-method="aspectOf" p:prefix="The Prefix" p:suffix="The suffix" />
+
+
+
+</beans>
+
