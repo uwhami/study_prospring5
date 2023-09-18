@@ -40,8 +40,8 @@ public class PlainJdbcDemo {
         logger.info("Register a new singer");
 
         Singer singer = new Singer();
-        singer.setFirstName("==========Listing singer data after new singer created: Ed");
-        singer.setLastName("==========Listing singer data after new singer created: Sheeran");
+        singer.setFirstName("Ed");
+        singer.setLastName("Sheeran");
         singer.setBirthDate(new Date((new GregorianCalendar(1991,2,1991)).getTime().getTime()));
         singerDao.insert(singer);
 
