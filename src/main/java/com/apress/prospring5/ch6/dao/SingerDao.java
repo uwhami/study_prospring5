@@ -1,4 +1,6 @@
-package com.apress.prospring5.ch6;
+package com.apress.prospring5.ch6.dao;
+
+import com.apress.prospring5.ch6.entity.Singer;
 
 import java.util.List;
 
@@ -16,7 +18,7 @@ public interface SingerDao {
     String findFirstNameById(Long id);
     void insert(Singer singer);
     void update(Singer singer);
-    void delete(Singer singer);
+    void delete(Long singerId);
     List<Singer> findAllWithAlbums();
     void insertWithAlbum(Singer singer);
 }

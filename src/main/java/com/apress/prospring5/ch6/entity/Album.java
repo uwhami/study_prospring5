@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch6;
+package com.apress.prospring5.ch6.entity;
 
 import java.io.Serializable;
 import java.util.Date;
