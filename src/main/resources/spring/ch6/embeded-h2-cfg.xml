@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/jdbc
+						   http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!-- 6.6 임베디드 데이터베이스 기능. -->
+    <!-- 예제 6-21. XML로 임베디드 데이터베이스 사용 구성 -->
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:db/h2/schema.sql"/>
+        <jdbc:script location="classpath:db/h2/test-data.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="dataSource" />
+
+    <!-- JdbcSingerDao 클래스는 6.7 DAO 클래스에서 DataSource 사용하기에서 생성함.-->
+    <bean id="singerDao" class="com.apress.prospring5.ch6.JdbcSingerDao"
+          p:jdbcTemplate-ref="jdbcTemplate" />
+
+    <bean class="com.apress.prospring6.ch6.CleanUp"
+          c:jdbcTemplate-ref="jdbcTemplate"
+          destroy-method="destroy" />
+
+</beans>

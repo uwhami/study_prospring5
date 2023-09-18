@@ -54,6 +54,12 @@ dependencies {
 	implementation group: 'org.apache.commons', name: 'commons-lang3'
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
 	implementation group: 'org.apache.commons', name: 'commons-dbcp2'
+	// https://mvnrepository.com/artifact/com.h2database/h2
+	testImplementation group: 'com.h2database', name: 'h2'
+	// https://mvnrepository.com/artifact/org.apache.derby/derby
+	testImplementation group: 'org.apache.derby', name: 'derby'
+	// https://mvnrepository.com/artifact/org.hsqldb/hsqldb
+	testImplementation group: 'org.hsqldb', name: 'hsqldb'
 
 
 }
