@@ -47,6 +47,10 @@ dependencies {
 	compileOnly group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.17', ext: 'pom'
 	//compile 'org.codehaus.groovy:groovy-all:3.0.16'
 	implementation "org.aspectj:aspectjrt:1.9.6"
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.13.0'
+
 }
 
 
@@ -54,6 +58,8 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
 
 
 
