@@ -47,9 +47,14 @@ dependencies {
 	compileOnly group: 'org.codehaus.groovy', name: 'groovy-all', version: '3.0.17', ext: 'pom'
 	//compile 'org.codehaus.groovy:groovy-all:3.0.16'
 	implementation "org.aspectj:aspectjrt:1.9.6"
+	// https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-	implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.13.0'
+	implementation group: 'org.apache.commons', name: 'commons-lang3'
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2
+	implementation group: 'org.apache.commons', name: 'commons-dbcp2'
+
 
 }
 
