@@ -21,7 +21,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
      */
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(); //jdbcTemplate를 초기화 하는 코드.(예제 6-31)
         jdbcTemplate.setDataSource(dataSource);
         MySQLErrorCodesTranslator errorCodesTranslator = new MySQLErrorCodesTranslator();
         errorCodesTranslator.setDataSource(dataSource);
@@ -30,6 +30,9 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     }
 
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
