@@ -21,10 +21,10 @@
           p:dataSource-ref="dataSource" />
 
     <!-- JdbcSingerDao 클래스는 6.7 DAO 클래스에서 DataSource 사용하기에서 생성함.-->
-    <bean id="singerDao" class="com.apress.prospring5.ch6.JdbcSingerDao"
+    <bean id="singerDao" class="com.apress.prospring5.ch6.sec8.JdbcSingerDao"
           p:jdbcTemplate-ref="jdbcTemplate" />
 
-    <bean class="com.apress.prospring6.ch6.CleanUp"
+    <bean class="com.apress.prospring5.ch6.CleanUp"
           c:jdbcTemplate-ref="jdbcTemplate"
           destroy-method="destroy" />
 
