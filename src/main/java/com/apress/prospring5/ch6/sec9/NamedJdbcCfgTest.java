@@ -18,7 +18,6 @@ public class NamedJdbcCfgTest {
         assertNotNull(singerDao);
         String singerName = singerDao.findNameById(1L);
         assertTrue("John Mayer".equals(singerName));
-
         ctx.close();
     }
 }
