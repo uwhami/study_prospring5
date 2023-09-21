@@ -2,6 +2,7 @@ package com.apress.prospring5.ch6.sec8;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
 import com.apress.prospring5.ch6.entity.Singer;
+import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
      */
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(); //jdbcTemplate를 초기화 하는 코드.(예제 6-31)
         jdbcTemplate.setDataSource(dataSource);
         MySQLErrorCodesTranslator errorCodesTranslator = new MySQLErrorCodesTranslator();
         errorCodesTranslator.setDataSource(dataSource);
@@ -30,6 +31,9 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     }
 
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -48,9 +52,18 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         return null;
     }
 
+    /**
+     * 6.9.2 JdbcTemplate를 사용해 단일 값 조회하기.
+     * 예제 6-33. findNameById 메서드 추가.
+     * 첫번째인자 - SQL 구문
+     * 두번쨰인자 - 파라미터에 바인딩할 값을 Object 배열 형태로 지정
+     * 세번쟤인자 - 반환 값의 타입 지정.
+     */
     @Override
     public String findNameById(Long id) {
-        return null;
+        return jdbcTemplate.queryForObject(
+          "select first_name || ' ' || last_name from singer where id = ?",
+          new Object[]{id}, String.class);
     }
 
     @Override
@@ -65,7 +78,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     @Override
     public void insert(Singer singer) {
-
+        throw new NotImplementedException("insert");
     }
 
     @Override
