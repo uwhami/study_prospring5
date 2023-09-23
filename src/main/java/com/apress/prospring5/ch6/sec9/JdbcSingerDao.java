@@ -18,6 +18,10 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
+    /**
+     * 6.9.3 NamedParameterJdbcTemplate 으로 네임드 파라미터 사용하기.
+     * '?' 위치 지정자 대신 접두어로 콜론(:)이 붙는 네임드 파라미터를 확인할 수 있다.
+     */
     @Override
     public String findNameById(Long id){
         String sql = "SELECT first_name || ' ' || last_name FROM SINGER WHERE ID = :singerId";
