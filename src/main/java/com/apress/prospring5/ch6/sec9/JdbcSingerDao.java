@@ -4,8 +4,11 @@ import com.apress.prospring5.ch6.dao.SingerDao;
 import com.apress.prospring5.ch6.entity.Singer;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +33,7 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
     }
 
+
     @Override
     public void afterPropertiesSet() throws Exception {
         if(namedParameterJdbcTemplate == null){
@@ -37,14 +41,52 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
         }
     }
 
+    /**
+     * 6.4.9 RowMapper<T>를 사용해 도메인 객체 조회하기.
+     */
     @Override
     public List<Singer> findAll() {
-        return null;
+        String sql = "select id, first_name, last_name, birth_date from singer";
+        return namedParameterJdbcTemplate.query(sql, new SingerMapper());
+//        return namedParameterJdbcTemplate.query(sql, (rs, rowNum) -> {
+//            Singer singer = new Singer();
+//            singer.setId(rs.getLong("id"));
+//            singer.setFirstName(rs.getString("first_name"));
+//            singer.setLastName(rs.getString("last_name"));
+//            singer.setBirthDate(rs.getDate("birth_date"));
+//            return singer;
+//        });
     }
 
+    private static final class SingerMapper implements RowMapper<Singer> {
+        @Override
+        public Singer mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Singer singer = new Singer();
+            singer.setId(rs.getLong("id"));
+            singer.setFirstName(rs.getString("first_name"));
+            singer.setLastName(rs.getString("last_name"));
+            singer.setBirthDate(rs.getDate("birth_date"));
+            return singer;
+        }
+
+    }
+
+    /**
+     * RowMapper<T>를 사용해 도메인 객체 조회하기 -> 람다식 사용.
+     */
     @Override
     public List<Singer> findByFirstName(String firstName) {
-        return null;
+        String sql = "select id, first_name, last_name, birth_date from singer where first_name = :first_name";
+        Map<String,Object> namedParameters = new HashMap<>();
+        namedParameters.put("first_name", firstName);
+        return namedParameterJdbcTemplate.query(sql, namedParameters, (rs, rowNum)->{
+            Singer singer = new Singer();
+            singer.setId(rs.getLong("id"));
+            singer.setFirstName(rs.getString("first_name"));
+            singer.setLastName(rs.getString("last_name"));
+            singer.setBirthDate(rs.getDate("birth_date"));
+            return singer;
+        });
     }
 
     @Override
