@@ -1,14 +1,18 @@
 package com.apress.prospring5.ch6.sec9;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
+import com.apress.prospring5.ch6.entity.Album;
 import com.apress.prospring5.ch6.entity.Singer;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,9 +118,49 @@ public class JdbcSingerDao implements SingerDao, InitializingBean {
 
     }
 
+    /**
+     * 6.10 ResultSetExtractor를 사용해 중첩 도메인 객체 조회하기.
+     *
+     * 예제 6-40. RowMapper<T>는 단일 도메인 객체에만 로우를 매핑할 수 있다.
+     * 좀더 복잡한 객체 구조에서는 ResultSetExtractor 인터페이스를 사용해야 한다.
+     */
     @Override
     public List<Singer> findAllWithAlbums() {
-        return null;
+        String sql = "select s.id, s.first_name, s.last_name, s.birth_date, a.id as album_id, a.title, a.release_date " +
+                "from singer s left join album a on s.id = a.singer_id";
+        return namedParameterJdbcTemplate.query(sql, new SingerWithDetailExtractor());
+    }
+
+    private static final class SingerWithDetailExtractor implements ResultSetExtractor<List<Singer>> {
+        @Override
+        public List<Singer> extractData(ResultSet rs) throws SQLException, DataAccessException {
+            Map<Long, Singer> map = new HashMap<>();
+            Singer singer;
+            while(rs.next()){
+                Long id = rs.getLong("id");
+                singer = map.get(id);
+                if(singer == null){
+                    singer = new Singer();
+                    singer.setId(id);
+                    singer.setFirstName(rs.getString("first_name"));
+                    singer.setLastName(rs.getString("last_name"));
+                    singer.setBirthDate(rs.getDate("birth_date"));
+                    singer.setAlbums(new ArrayList<>());
+                    map.put(id, singer);
+                }
+                Long albumId = rs.getLong("album_id");
+                if(albumId > 0){
+                    Album album = new Album();
+                    album.setId(albumId);
+                    album.setSingerId(id);
+                    album.setTitle(rs.getString("title"));
+                    album.setReleaseDate(rs.getDate("release_date"));
+                    singer.addAlbum(album);
+                }
+            }
+            return new ArrayList<>(map.values());
+        }
+
     }
 
     @Override
