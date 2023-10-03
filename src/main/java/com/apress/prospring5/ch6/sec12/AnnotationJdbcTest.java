@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+
 import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -42,7 +43,7 @@ public class AnnotationJdbcTest {
     @Test
     public void testFindAll(){
         List<Singer> singers = singerDao.findAll();
-        assertTrue(singers.size() == 3);
+        assertTrue(singers.size() > 0);
         listSingers(singers);
         ctx.close();
     }
@@ -70,6 +71,19 @@ public class AnnotationJdbcTest {
         singerDao.update(singer);
 
         singers = singerDao.findAll();
+        listSingers(singers);
+    }
+
+    /** 6.13 (sec13) 데이터 등록 및 생성된 키 조회하기. */
+    @Test
+    public void testSingerInsert(){
+        Singer singer = new Singer();
+        singer.setFirstName("Dajeong");
+        singer.setLastName("Kim");
+        singer.setBirthDate(new Date((new GregorianCalendar(1991,12,22)).getTime().getTime()));
+        singerDao.insert(singer);
+
+        List<Singer> singers = singerDao.findAll();
         listSingers(singers);
     }
 

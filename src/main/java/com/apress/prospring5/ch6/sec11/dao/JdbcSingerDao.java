@@ -5,8 +5,11 @@ import com.apress.prospring5.ch6.entities.Singer;
 import com.apress.prospring5.ch6.sec12.SelectAllSingers;
 import com.apress.prospring5.ch6.sec12.SelectSingerByFirstName;
 import com.apress.prospring5.ch6.sec12.UpdateSinger;
+import com.apress.prospring5.ch6.sec13.InsertSinger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -31,6 +34,8 @@ public class JdbcSingerDao implements SingerDao {
     private SelectSingerByFirstName selectSingerByFirstName;
     private UpdateSinger updateSinger;
 
+    /** 6.13 데이터 등록 및 생성된 키 조회하기. */
+    private InsertSinger insertSinger;
 
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource){
@@ -38,6 +43,7 @@ public class JdbcSingerDao implements SingerDao {
         this.selectAllSingers = new SelectAllSingers(dataSource);
         this.selectSingerByFirstName = new SelectSingerByFirstName(dataSource);
         this.updateSinger = new UpdateSinger(dataSource);
+        this.insertSinger = new InsertSinger(dataSource);
     }
 
     @Override
@@ -69,7 +75,14 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public void insert(Singer singer) {
-
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("first_name", singer.getFirstName());
+        paramMap.put("last_name", singer.getLastName());
+        paramMap.put("birth_date", singer.getBirthDate());
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertSinger.updateByNamedParam(paramMap, keyHolder);
+        singer.setId(keyHolder.getKey().longValue());
+        logger.info("==========Register new Singer, id : " + singer.getId());
     }
 
     @Override
