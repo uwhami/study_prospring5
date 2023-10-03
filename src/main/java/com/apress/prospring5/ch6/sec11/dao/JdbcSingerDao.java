@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch6.sec11.entities;
+package com.apress.prospring5.ch6.sec11.dao;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
 import com.apress.prospring5.ch6.entities.Singer;
