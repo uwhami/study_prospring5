@@ -25,10 +25,10 @@ public class AppConfig {
     @Value("${url}")
     private String url;
 
-    @Value("${dbusername}")
+    @Value("${username}")
     private String dbusername;
 
-    @Value("${dbpassword}")
+    @Value("${password}")
     private String dbpassword;
 
     @Bean
