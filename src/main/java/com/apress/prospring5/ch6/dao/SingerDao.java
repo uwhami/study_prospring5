@@ -1,6 +1,6 @@
 package com.apress.prospring5.ch6.dao;
 
-import com.apress.prospring5.ch6.entity.Singer;
+import com.apress.prospring5.ch6.entities.Singer;
 
 import java.util.List;
 

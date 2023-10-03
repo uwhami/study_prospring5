@@ -1,7 +1,7 @@
 package com.apress.prospring5.ch6.sec3;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
-import com.apress.prospring5.ch6.entity.Singer;
+import com.apress.prospring5.ch6.entities.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

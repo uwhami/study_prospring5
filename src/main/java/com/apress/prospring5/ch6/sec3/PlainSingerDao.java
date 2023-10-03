@@ -1,6 +1,6 @@
 package com.apress.prospring5.ch6.sec3;
 
-import com.apress.prospring5.ch6.entity.Singer;
+import com.apress.prospring5.ch6.entities.Singer;
 import com.apress.prospring5.ch6.dao.SingerDao;
 import org.apache.commons.lang3.NotImplementedException;
 

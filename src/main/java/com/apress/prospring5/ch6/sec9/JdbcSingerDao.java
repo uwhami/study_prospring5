@@ -1,8 +1,8 @@
 package com.apress.prospring5.ch6.sec9;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
-import com.apress.prospring5.ch6.entity.Album;
-import com.apress.prospring5.ch6.entity.Singer;
+import com.apress.prospring5.ch6.entities.Album;
+import com.apress.prospring5.ch6.entities.Singer;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.dao.DataAccessException;
