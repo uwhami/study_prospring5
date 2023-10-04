@@ -1,19 +1,23 @@
 package com.apress.prospring5.ch6.sec11.dao;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
+import com.apress.prospring5.ch6.entities.Album;
 import com.apress.prospring5.ch6.entities.Singer;
 import com.apress.prospring5.ch6.sec12.SelectAllSingers;
 import com.apress.prospring5.ch6.sec12.SelectSingerByFirstName;
 import com.apress.prospring5.ch6.sec12.UpdateSinger;
 import com.apress.prospring5.ch6.sec13.InsertSinger;
+import com.apress.prospring5.ch6.sec14.InsertSingerAlbum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +40,9 @@ public class JdbcSingerDao implements SingerDao {
 
     /** 6.13 데이터 등록 및 생성된 키 조회하기. */
     private InsertSinger insertSinger;
+
+    /** 6.14 BatchSqlUpdate를 사용하는 배치 조작 */
+    private InsertSingerAlbum insertSingerAlbum;
 
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource){
@@ -103,11 +110,60 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public List<Singer> findAllWithAlbums() {
-        return null;
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+        String sql = "select s.id, s.first_name, s.last_name, s.birth_date, a.id as album_id, a.title, a.release_date " +
+                "from singer s left join album a on s.id = a.singer_id";
+
+        return jdbcTemplate.query(sql,(rs -> { /** ResultSetExtratcor<List<Singer>> 클래스를 상속한 클래스를 람다식으로 표현. */
+            Map<Long,Singer> map = new HashMap<>();
+            Singer singer;
+            while(rs.next()){
+                Long id = rs.getLong("id");
+                singer = map.get(id);
+                if(singer == null) {
+                    singer = new Singer();
+                    singer.setId(id);
+                    singer.setFirstName(rs.getString("first_name"));
+                    singer.setLastName(rs.getString("last_name"));
+                    singer.setBirthDate(rs.getDate("birth_date"));
+                    singer.setAlbums(new ArrayList<>());
+                    map.put(id, singer);
+                }
+                Long albumId = rs.getLong("album_id");
+                if(albumId != null && albumId > 0){
+                    Album album = new Album();
+                    album.setSingerId(rs.getLong("album_id"));
+                    album.setSingerId(id);
+                    album.setTitle(rs.getString("title"));
+                    album.setReleaseDate(rs.getDate("release_date"));
+                    singer.addAlbum(album);
+                }
+            }
+            return new ArrayList<>(map.values());
+        }));
     }
 
     @Override
     public void insertWithAlbum(Singer singer) {
-
+        insertSingerAlbum = new InsertSingerAlbum(dataSource);
+        Map<String,Object> paramMap = new HashMap<>();
+        paramMap.put("first_name", singer.getFirstName());
+        paramMap.put("last_name", singer.getLastName());
+        paramMap.put("birth_date", singer.getBirthDate());
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertSinger.updateByNamedParam(paramMap, keyHolder);
+        singer.setId(keyHolder.getKey().longValue());
+        logger.info("==========New Singer is registered. id : " + singer.getId());
+        List<Album> albums = singer.getAlbums();
+        if(albums != null){
+            for(Album album : albums){
+                paramMap = new HashMap<>();
+                paramMap.put("singer_id", singer.getId());
+                paramMap.put("title", album.getTitle());
+                paramMap.put("release_date", album.getReleaseDate());
+                insertSingerAlbum.updateByNamedParam(paramMap);
+            }
+        }
+        insertSingerAlbum.flush();  //대기중인 등록 조작을 일괄 처리하는 메서드 호출.
     }
 }
