@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch6.sec12;
 
 import com.apress.prospring5.ch6.dao.SingerDao;
+import com.apress.prospring5.ch6.entities.Album;
 import com.apress.prospring5.ch6.entities.Singer;
 import com.apress.prospring5.ch6.sec11.config.AppConfig;
 import org.junit.After;
@@ -84,6 +85,30 @@ public class AnnotationJdbcTest {
         singerDao.insert(singer);
 
         List<Singer> singers = singerDao.findAll();
+        listSingers(singers);
+    }
+
+    /** 6.14 (sec14) BatchSqlUpdate를 사용하는 배치 조작 */
+    @Test
+    public void testSingerInsertWithAlbum(){
+        Singer singer = new Singer();
+        singer.setFirstName("JH");
+        singer.setLastName("Shin");
+        singer.setBirthDate(new Date((new GregorianCalendar(1991,12,14)).getTime().getTime()));
+
+        Album album = new Album();
+        album.setTitle("My kind of Blues");
+        album.setReleaseDate(new Date((new GregorianCalendar(1961,7,18)).getTime().getTime()));
+        singer.addAlbum(album);
+
+        album = new Album();
+        album.setTitle("Second Album");
+        album.setReleaseDate(new Date((new GregorianCalendar(1962,8,19)).getTime().getTime()));
+        singer.addAlbum(album);
+
+        singerDao.insertWithAlbum(singer);
+
+        List<Singer> singers = singerDao.findAllWithAlbums();
         listSingers(singers);
     }
 
