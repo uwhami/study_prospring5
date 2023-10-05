@@ -15,8 +15,7 @@ import java.sql.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AnnotationJdbcTest {
 
@@ -111,6 +110,15 @@ public class AnnotationJdbcTest {
         List<Singer> singers = singerDao.findAllWithAlbums();
         listSingers(singers);
     }
+
+    /** 6.15 SqlFunction으로 저장 함수 호출하기 */
+    @Test
+    public void testFindFirstNameById(){
+        String firstName = singerDao.findFirstNameById(2L);
+        assertEquals("Eric",firstName);
+        System.out.println("==========Viewed Value : " + firstName);
+    }
+
 
     @After
     public void tearDown(){

@@ -8,6 +8,7 @@ import com.apress.prospring5.ch6.sec12.SelectSingerByFirstName;
 import com.apress.prospring5.ch6.sec12.UpdateSinger;
 import com.apress.prospring5.ch6.sec13.InsertSinger;
 import com.apress.prospring5.ch6.sec14.InsertSingerAlbum;
+import com.apress.prospring5.ch6.sec15.StoredFunctionFirstNameById;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,6 +45,9 @@ public class JdbcSingerDao implements SingerDao {
     /** 6.14 BatchSqlUpdate를 사용하는 배치 조작 */
     private InsertSingerAlbum insertSingerAlbum;
 
+    /** 6.15 SqlFunction으로 저장 함수 호출하기 */
+    private StoredFunctionFirstNameById storedFunctionFirstNameById;
+
     @Resource(name = "dataSource")
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
@@ -51,6 +55,7 @@ public class JdbcSingerDao implements SingerDao {
         this.selectSingerByFirstName = new SelectSingerByFirstName(dataSource);
         this.updateSinger = new UpdateSinger(dataSource);
         this.insertSinger = new InsertSinger(dataSource);
+        this.storedFunctionFirstNameById = new StoredFunctionFirstNameById(dataSource);
     }
 
     @Override
@@ -77,7 +82,8 @@ public class JdbcSingerDao implements SingerDao {
 
     @Override
     public String findFirstNameById(Long id) {
-        return null;
+        List<String> result = storedFunctionFirstNameById.execute(id);
+        return result.get(0);
     }
 
     @Override
