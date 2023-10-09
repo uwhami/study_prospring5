@@ -35,7 +35,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'junit:junit:4.13.1'
 	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -60,6 +60,20 @@ dependencies {
 	implementation group: 'org.apache.derby', name: 'derby'
 	// https://mvnrepository.com/artifact/org.hsqldb/hsqldb
 	implementation group: 'org.hsqldb', name: 'hsqldb'
+	// https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+//	implementation group: 'ch.qos.logback', name: 'logback-classic'
+	// https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+//	implementation group: 'ch.qos.logback', name: 'logback-core'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-logging
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging'
+	// https://mvnrepository.com/artifact/org.slf4j/jul-to-slf4j
+	implementation group: 'org.slf4j', name: 'jul-to-slf4j'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+//	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2'
+//	implementation group: 'org.bgee.log4jdbc-log4j2', name : 'log4jdbc-log4j2-jdbc4.1', version: 1.16
+
 
 
 }
