@@ -16,6 +16,10 @@ public class Album implements Serializable {
     private Date releaseDate;
     private int version;
 
+    /** 7.3.2 일대다 매핑. */
+    private Singer singer;
+
+
     @Id //객체의 기본키 임을 뜻함.
     @GeneratedValue //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
     @Column(name = "ID")
@@ -54,6 +58,18 @@ public class Album implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+
+    /** 7.3.2 일대다 매핑. */
+    @ManyToMany
+    @JoinColumn(name = "SINGER_ID")
+    public Singer getSinger() {
+        return singer;
+    }
+
+    public void setSinger(Singer singer) {
+        this.singer = singer;
     }
 
     @Override

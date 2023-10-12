@@ -1,8 +1,11 @@
 package com.apress.prospring5.ch7.entities;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 7.3 하이버네이트 애너테이션으로 ORM 매핑하기.
@@ -22,6 +25,9 @@ public class Singer implements Serializable {
     private String lastName;
     private Date birthDate;
     private int version;
+
+    /** 7.3.2 일대다 매핑. Singer 엔ㅌ터티와 Album 엔터티의 일대다 관계. */
+    private Set<Album> albums = new HashSet<>();
 
     @Id //객체의 기본키 임을 뜻함.
     @GeneratedValue //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
@@ -78,6 +84,21 @@ public class Singer implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    /**
+     * 7.3.2 일대다 매핑.
+     * @OneToMany : 일대 다 관계를 나타내는 애너테이션.
+     * cascade : 수정 작업이 수정할 테이블부터 관련 있는 자식 테이블의 레코드까지 "모두 전이돼야 함(cascade)"을 나타냄.
+     * orphanRemoval : Set에 들어있는 앨범이 수정됐을 때 더이상 존재하지 않는 앨범 레코드를 데이터베이스에서 삭제해야 함을 표시.
+     */
+    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
     }
 
     @Override
