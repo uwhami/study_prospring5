@@ -29,6 +29,9 @@ public class Singer implements Serializable {
     /** 7.3.2 일대다 매핑. Singer 엔ㅌ터티와 Album 엔터티의 일대다 관계. */
     private Set<Album> albums = new HashSet<>();
 
+    /** 7.3.3 다대다 매핑. */
+    private Set<Instrument> instruments = new HashSet<>();
+
     @Id //객체의 기본키 임을 뜻함.
     @GeneratedValue //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
     @Column(name = "ID")
@@ -86,8 +89,9 @@ public class Singer implements Serializable {
         this.version = version;
     }
 
-    /**
-     * 7.3.2 일대다 매핑.
+
+
+    /** 7.3.2 일대다 매핑.
      * @OneToMany : 일대 다 관계를 나타내는 애너테이션.
      * cascade : 수정 작업이 수정할 테이블부터 관련 있는 자식 테이블의 레코드까지 "모두 전이돼야 함(cascade)"을 나타냄.
      * orphanRemoval : Set에 들어있는 앨범이 수정됐을 때 더이상 존재하지 않는 앨범 레코드를 데이터베이스에서 삭제해야 함을 표시.
@@ -100,6 +104,23 @@ public class Singer implements Serializable {
     public void setAlbums(Set<Album> albums) {
         this.albums = albums;
     }
+
+
+    /** 7.3.3 다대다 매핑.
+     *  JoinTable : 하이버네이트가 검색해야 할 조인 테이블을 지정.
+     */
+    @ManyToMany
+    @JoinTable(name="singer_instrument",
+               joinColumns = @JoinColumn(name="SINGER_ID"),
+               inverseJoinColumns = @JoinColumn(name="INSTRUMENT_ID"))
+    public Set<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(Set<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
 
     @Override
     public String toString() {
