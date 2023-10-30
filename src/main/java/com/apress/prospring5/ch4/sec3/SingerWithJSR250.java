@@ -1,10 +1,9 @@
 package com.apress.prospring5.ch4.sec3;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-
-import javax.annotation.PostConstruct;
 
 /**
  * 4.3.3 애너테이션을 사용한 빈 초기화 호출.

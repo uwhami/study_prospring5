@@ -41,7 +41,7 @@ public class DestructiveBeanConfig {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(DistructiveBeanConfig.class);
         ctx.getBean(DestructiveBean.class);
         System.out.println("==========Start Calling destroy()");
-        ctx.destroy();
+        ctx.close();
         System.out.println("==========End Calling destroy()");
     }
 
