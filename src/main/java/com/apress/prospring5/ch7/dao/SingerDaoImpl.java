@@ -29,6 +29,16 @@ public class SingerDaoImpl implements SingerDao {
         this.sessionFactory = sessionFactory;
     }
 
+
+    /**
+     * 7.4.2 지연로딩을 하는 간단한 쿼리
+     *
+     * 이상태로 실행시키면 could not initialize proxy - no Session 에러가 발생한다.
+     * 이는 하이버네이트가 기본으로 연관 관계를 지연 로딩(Lazy Loading)하며,
+     * 레코드에 연관된 테이블을 조인하지 않기 때문이다.
+     * 지연로딩을 하는 근본적인 이유는 성능때문이다.
+     * 어떤 쿼리가 수많은 레코드를 조회하면서 모든 연관 관계 레코드를 함꼐 조회한다면 데이터 전송이 발생해 성능이 저하될 것이다.
+     */
     @Override
     @Transactional(readOnly = true)
     public List<Singer> findAll() throws HibernateException {
