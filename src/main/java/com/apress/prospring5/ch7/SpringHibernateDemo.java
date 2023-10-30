@@ -32,8 +32,9 @@ public class SpringHibernateDemo {
     public static void main(String[] args) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         SingerDao singerDao = ctx.getBean(SingerDao.class);
-        listSingersWithAlbum(singerDao.findAll());
-
+        //listSingersWithAlbum(singerDao.findAll());
+        //listSingersWithAlbum(singerDao.findAllWithAlbum());
+        logger.info(singerDao.findById(2L).toString());
         ctx.close();
     }
 

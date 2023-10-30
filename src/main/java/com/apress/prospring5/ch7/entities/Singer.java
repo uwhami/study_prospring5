@@ -17,9 +17,24 @@ import static jakarta.persistence.GenerationType.IDENTITY;
  * @Table  애너테이션은 Singer 엔터티 클래스가 매핑돼야 할 데이터베이스 테이블 이름을 정의함.
  * 각 매핑 애트리뷰트에는 컬럼 이름을 지정한 @Column 애너테이션을 적용한다.
  *  *테이블이름이 클래스타입과 같다면 테이블 이름을 생략, 컬럼 이름이 애트리뷰트 이름과 같다면 컬럼 이름을 생략 가능하다.
+ *
+ *  7.4.3 연관 관계 데이터를 조회하는 쿼리.
+ *  @NamedQuery : 애너테이션으로 네임드 쿼리를 적용해 수정 <- 하이버네이트가 연관된 레코드를 조회하도록 쿼리 내에 강제하는 것.
+ *  left join fetch 절을 사용해 하이버네이트가 연관 관계를 즉시 조회하도록 지정함.
  */
 @Entity
 @Table(name = "singer")
+@NamedQueries({
+        @NamedQuery(name="Singer.findAllWithAlbum",
+            query="select distinct s from Singer s " +
+                    "left join fetch s.albums a " +
+                    "left join fetch s.instruments i"),
+        @NamedQuery(name="Singer.findById",
+                query="select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments i " +
+                        "where s.id = :id")
+})
 public class Singer implements Serializable {
 
     private Long id;
@@ -111,6 +126,10 @@ public class Singer implements Serializable {
     public boolean addAlbum(Album album) {
         album.setSinger(this);
         return getAlbums().add(album);
+    }
+
+    public void removeAlbum(Album album) {
+        getAlbums().remove(album);
     }
 
     /** 7.3.3 다대다 매핑.
