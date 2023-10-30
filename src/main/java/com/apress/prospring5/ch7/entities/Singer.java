@@ -1,11 +1,13 @@
 package com.apress.prospring5.ch7.entities;
 
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 /**
  * 7.3 하이버네이트 애너테이션으로 ORM 매핑하기.
@@ -18,6 +20,17 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "singer")
+@NamedQueries({
+        @NamedQuery(name="Singer.findById",
+                query="select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments i " +
+                        "where s.id = :id"),
+        @NamedQuery(name="Singer.findAllWithAlbum",
+                query="select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments i")
+})
 public class Singer implements Serializable {
 
     private Long id;
@@ -33,7 +46,7 @@ public class Singer implements Serializable {
     private Set<Instrument> instruments = new HashSet<>();
 
     @Id //객체의 기본키 임을 뜻함.
-    @GeneratedValue //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
+    @GeneratedValue(strategy = IDENTITY) //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
     @Column(name = "ID")
     public Long getId() {
         return id;
@@ -96,7 +109,7 @@ public class Singer implements Serializable {
      * cascade : 수정 작업이 수정할 테이블부터 관련 있는 자식 테이블의 레코드까지 "모두 전이돼야 함(cascade)"을 나타냄.
      * orphanRemoval : Set에 들어있는 앨범이 수정됐을 때 더이상 존재하지 않는 앨범 레코드를 데이터베이스에서 삭제해야 함을 표시.
      */
-    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     public Set<Album> getAlbums() {
         return albums;
     }
@@ -105,11 +118,15 @@ public class Singer implements Serializable {
         this.albums = albums;
     }
 
+    public boolean addAlbum(Album album) {
+        album.setSinger(this);
+        return getAlbums().add(album);
+    }
 
     /** 7.3.3 다대다 매핑.
      *  JoinTable : 하이버네이트가 검색해야 할 조인 테이블을 지정.
      */
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="singer_instrument",
                joinColumns = @JoinColumn(name="SINGER_ID"),
                inverseJoinColumns = @JoinColumn(name="INSTRUMENT_ID"))
