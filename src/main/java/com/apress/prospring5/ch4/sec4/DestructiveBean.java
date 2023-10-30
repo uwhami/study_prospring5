@@ -48,7 +48,8 @@ public class DestructiveBean {
         DestructiveBean bean = (DestructiveBean) ctx.getBean("destructiveBean");
 
         System.out.println("==========Start Calling destroy()");
-        ctx.destroy();  //xml에서 detroy-method 애트리뷰트에 destroy 를 매칭하여 소멸 콜백을 destroy()로 지정. 소멸할때 destroy() 함수를 부르고 소멸함.
+        //ctx.destroy();  //xml에서 detroy-method 애트리뷰트에 destroy 를 매칭하여 소멸 콜백을 destroy()로 지정. 소멸할때 destroy() 함수를 부르고 소멸함.
+        ctx.close();
         System.out.println("==========End Calling destroy()");
 
     }

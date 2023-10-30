@@ -1,9 +1,10 @@
 package com.apress.prospring5.ch4.sec4;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+
 import java.io.File;
 
 public class DestructiveBeanWithJSR250 {
@@ -47,7 +48,7 @@ public class DestructiveBeanWithJSR250 {
         DestructiveBeanWithJSR250 bean = (DestructiveBeanWithJSR250) ctx.getBean("destructiveBeanWithJSR250");
 
         System.out.println("==========Start Calling destroy()");
-        ctx.destroy();  //xml에서 detroy-method 애트리뷰트에 destroy 를 매칭하여 소멸 콜백을 destroy()로 지정. 소멸할때 destroy() 함수를 부르고 소멸함.
+//        ctx.destroy();  //xml에서 detroy-method 애트리뷰트에 destroy 를 매칭하여 소멸 콜백을 destroy()로 지정. 소멸할때 destroy() 함수를 부르고 소멸함.
         System.out.println("==========End Calling destroy()");
 
         /*
