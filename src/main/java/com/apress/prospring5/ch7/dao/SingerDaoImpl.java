@@ -2,12 +2,13 @@ package com.apress.prospring5.ch7.dao;
 
 
 import com.apress.prospring5.ch7.entities.Singer;
+import jakarta.annotation.Resource;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
+//import javax.annotation.Resource;
 import java.util.List;
 
 /** 7.4 하이버네이트 Session 인터페이스

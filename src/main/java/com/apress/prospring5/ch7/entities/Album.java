@@ -1,8 +1,11 @@
 package com.apress.prospring5.ch7.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Date;
+
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 /**
  * 7.3.1 단순 매핑.
@@ -21,7 +24,7 @@ public class Album implements Serializable {
 
 
     @Id //객체의 기본키 임을 뜻함.
-    @GeneratedValue //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
+    @GeneratedValue(strategy = IDENTITY) //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
     @Column(name = "ID")
     public Long getId() {
         return id;
@@ -62,7 +65,7 @@ public class Album implements Serializable {
 
 
     /** 7.3.2 일대다 매핑. */
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "SINGER_ID")
     public Singer getSinger() {
         return singer;
