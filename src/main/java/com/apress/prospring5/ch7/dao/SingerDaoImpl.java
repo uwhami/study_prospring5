@@ -45,14 +45,19 @@ public class SingerDaoImpl implements SingerDao {
         return sessionFactory.getCurrentSession().createQuery("from Singer s", Singer.class).list();
     }
 
+    /**
+     * 7.4.3 연관 관계 데이터를 조회하는 쿼리.
+     * NamedQuery 인스턴스 이름을 인자로 전달.
+     */
     @Override
     public List<Singer> findAllWithAlbum() {
-        return null;
+        return sessionFactory.getCurrentSession().createNamedQuery("Singer.findAllWithAlbum", Singer.class).list();
     }
 
     @Override
     public Singer findById(Long id) {
-        return null;
+        return (Singer) sessionFactory.getCurrentSession().createNamedQuery("Singer.findById", Singer.class)
+                .setParameter("id",id).uniqueResult();
     }
 
     @Override
