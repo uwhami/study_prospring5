@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import static com.apress.prospring5.ch7.SpringHibernateDemo.listSingersWithAlbum;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class SingerDaoTest {
@@ -66,6 +67,20 @@ public class SingerDaoTest {
     public void testFindById(){
         Singer singer = singerDao.findById(1L);
         logger.info("==========" + singer.toString());
+    }
+
+    @Test
+    public void testUpdate(){
+        Singer singer = singerDao.findById(1L);
+        assertNotNull(singer);
+        assertEquals("Mayer", singer.getLastName());
+        Album album = singer.getAlbums().stream().filter(
+                a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+        singer.setFirstName("John Clayton");
+        singer.removeAlbum(album);
+        singerDao.save(singer);
+
+        listSingersWithAlbum(singerDao.findAllWithAlbum());
     }
 
 }
