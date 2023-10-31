@@ -114,6 +114,12 @@ public class Singer implements Serializable {
      * orphanRemoval : Set에 들어있는 앨범이 수정됐을 때 더이상 존재하지 않는 앨범 레코드를 데이터베이스에서 삭제해야 함을 표시.
      */
 //    @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+
+    /**
+     *  fetch = FetchType.EAGER 를 제외한 이유는 singer를 불러올때마다 다 불러오면 비효율적이기 때문. 그래서 NamedQuery로 대체함.
+     *  7.6 데이터 수정에서 orphanRemoval = true 애트리뷰트를 지정했기 때문에 하이버네이트는
+     *  데이터베이스에 객체를 저장할 때 데이터베이스에는 존재하지만 객체에는 더이상 존재하지 않는 모든 고아 레코드를 삭제한다.
+     */
     @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
     public Set<Album> getAlbums() {
         return albums;
