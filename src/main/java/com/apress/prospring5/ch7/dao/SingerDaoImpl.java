@@ -71,8 +71,12 @@ public class SingerDaoImpl implements SingerDao {
         return singer;
     }
 
+    /**
+     * singer 정보와 함께 Album과 SINGER_INSTRUMENT 테이블의 자식 레코드들도 함께 삭제된다.
+     */
     @Override
     public void delete(Singer singer) {
-
+        sessionFactory.getCurrentSession().remove(singer);
+        logger.info("==========Delete Singer Record. id : " + singer.getId());
     }
 }
