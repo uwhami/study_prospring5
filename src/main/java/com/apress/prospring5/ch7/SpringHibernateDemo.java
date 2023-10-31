@@ -14,10 +14,11 @@ public class SpringHibernateDemo {
 
     private static Logger logger = LoggerFactory.getLogger(SpringHibernateDemo.class);
 
-    private static void listSingersWithAlbum(List<Singer> singers){
+    static void listSingersWithAlbum(List<Singer> singers){
         logger.info("==========List of Singers (Including instruments to handle)");
 
         singers.forEach(s -> {
+            logger.info("==========" + s.toString());
             if(s.getAlbums() != null){
                 s.getAlbums().forEach(a -> logger.info("==========\t" + a.toString()));
             }
