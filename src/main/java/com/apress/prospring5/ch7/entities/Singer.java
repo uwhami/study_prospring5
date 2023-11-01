@@ -143,7 +143,7 @@ public class Singer implements Serializable {
      */
 //    @ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
-    @JoinTable(name="singer_instrument",
+    @JoinTable(name="instrument",
                joinColumns = @JoinColumn(name="SINGER_ID"),
                inverseJoinColumns = @JoinColumn(name="INSTRUMENT_ID"))
     public Set<Instrument> getInstruments() {

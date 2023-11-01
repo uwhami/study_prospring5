@@ -57,12 +57,12 @@ public class DBInitializer {
         singer.addInstrument(piano);
 
         Album album1 = new Album();
-        album1.setTitle("The Search For Everything");
+        album1.setTitle("The Search For Everything2");
         album1.setReleaseDate(new java.sql.Date((new GregorianCalendar(2017, 0, 20)).getTime().getTime()));
         singer.addAlbum(album1);
 
         Album album2 = new Album();
-        album2.setTitle("Battle Studies");
+        album2.setTitle("Battle Studies2");
         album2.setReleaseDate(new java.sql.Date((new GregorianCalendar(2009, 10, 17)).getTime().getTime()));
         singer.addAlbum(album2);
 
