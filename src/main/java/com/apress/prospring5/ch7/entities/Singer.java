@@ -154,6 +154,14 @@ public class Singer implements Serializable {
         this.instruments = instruments;
     }
 
+    public boolean addInstrument(Instrument instrument) {
+        instrument.setSinger(this);
+        return getInstruments().add(instrument);
+    }
+
+    public void removeInstrument(Instrument instrument) {
+        getInstruments().remove(instrument);
+    }
 
     @Override
     public String toString() {

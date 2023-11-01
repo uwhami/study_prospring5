@@ -3,10 +3,9 @@ package com.apress.prospring5.ch7.dao;
 
 import com.apress.prospring5.ch7.entities.Singer;
 import jakarta.annotation.Resource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +20,7 @@ import java.util.List;
 @Repository("singerDao")
 public class SingerDaoImpl implements SingerDao {
 
-    private static final Log logger = LogFactory.getLog(SingerDaoImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(SingerDaoImpl.class);
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory(){
