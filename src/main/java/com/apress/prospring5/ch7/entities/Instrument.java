@@ -40,6 +40,10 @@ public class Instrument implements Serializable {
         this.singers = singers;
     }
 
+    public void setSinger(Singer singer){
+        singers.add(singer);
+    }
+
 
 
     @Override
