@@ -1,8 +1,10 @@
 package com.apress.prospring5.ch7;
 
 import com.apress.prospring5.ch7.config.AppConfig;
+import com.apress.prospring5.ch7.dao.InstrumentDao;
 import com.apress.prospring5.ch7.dao.SingerDao;
 import com.apress.prospring5.ch7.entities.Album;
+import com.apress.prospring5.ch7.entities.Instrument;
 import com.apress.prospring5.ch7.entities.Singer;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,11 +27,13 @@ public class SingerDaoTest {
 
     private GenericApplicationContext ctx;
     private SingerDao singerDao;
+    private InstrumentDao instrumentDao;
 
     @Before
     public void setUp(){
         ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         singerDao = ctx.getBean(SingerDao.class);
+        instrumentDao = ctx.getBean(InstrumentDao.class);
         assertNotNull(singerDao);
     }
 
@@ -90,6 +94,18 @@ public class SingerDaoTest {
         singerDao.delete(singer);
 
         listSingersWithAlbum(singerDao.findAllWithAlbum());
+    }
+
+    @Test
+    public void testSaveInstrument(){
+        Singer singer = singerDao.findById(3L);
+        Instrument instrument = new Instrument();
+        instrument.setInstrumentId("Add Test");
+        singer.addInstrument(instrument);
+        instrumentDao.save(instrument);
+
+        listSingersWithAlbum(singerDao.findAllWithAlbum());
+
     }
 
 }

@@ -34,16 +34,16 @@ public class AdvancedConfig {
 
     private static Logger logger = LoggerFactory.getLogger(AdvancedConfig.class);
 
-    @Value("${driverClassName}")
+    @Value("${jdbc.driverClassName}")
     private String driverClassName;
 
-    @Value("${url}")
+    @Value("${jdbc.url}")
     private String url;
 
-    @Value("${username}")
+    @Value("${jdbc.username}")
     private String username;
 
-    @Value("${password}")
+    @Value("${jdbc.password}")
     private String password;
 
     @Bean
