@@ -14,7 +14,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @Table(name="album")
 public class Album implements Serializable {
 
-    private Long id;
+    private Long albumId;
     private String title;
     private Date releaseDate;
     private int version;
@@ -25,13 +25,13 @@ public class Album implements Serializable {
 
     @Id //객체의 기본키 임을 뜻함.
     @GeneratedValue(strategy = IDENTITY) //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
-    @Column(name = "ID")
+    @Column(name = "ALBUM_ID")
     public Long getId() {
-        return id;
+        return albumId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.albumId = id;
     }
 
     @Column
@@ -78,7 +78,7 @@ public class Album implements Serializable {
     @Override
     public String toString() {
         return "==========Album{" +
-                "id=" + id +
+                "id=" + albumId +
                 ", title='" + title + '\'' +
                 ", releaseDate=" + releaseDate +
                 ", version=" + version +

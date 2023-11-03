@@ -29,7 +29,7 @@ public class Instrument implements Serializable {
 
     /** 7.3.3 다대다 매핑 */
     @ManyToMany
-    @JoinTable(name = "singer",
+    @JoinTable(name = "singer_instrument",
                joinColumns = @JoinColumn(name="INSTRUMENT_ID"),
                inverseJoinColumns = @JoinColumn(name="SINGER_ID"))
     public Set<Singer> getSingers() {
