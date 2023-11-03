@@ -37,7 +37,7 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 })
 public class Singer implements Serializable {
 
-    private Long id;
+    private Long singerId;
     private String firstName;
     private String lastName;
     private Date birthDate;
@@ -51,13 +51,13 @@ public class Singer implements Serializable {
 
     @Id //객체의 기본키 임을 뜻함.
     @GeneratedValue(strategy = IDENTITY) //id값이 등록 도중 벡엔드에서 생성됨을 뜻함.
-    @Column(name = "ID")
+    @Column(name = "SINGER_ID")
     public Long getId() {
-        return id;
+        return singerId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long singerId) {
+        this.singerId = singerId;
     }
 
     @Column(name = "FIRST_NAME")
@@ -143,7 +143,7 @@ public class Singer implements Serializable {
      */
 //    @ManyToMany(fetch = FetchType.EAGER)
     @ManyToMany
-    @JoinTable(name="instrument",
+    @JoinTable(name="singer_instrument",
                joinColumns = @JoinColumn(name="SINGER_ID"),
                inverseJoinColumns = @JoinColumn(name="INSTRUMENT_ID"))
     public Set<Instrument> getInstruments() {
@@ -166,7 +166,7 @@ public class Singer implements Serializable {
     @Override
     public String toString() {
         return "==========Singer{" +
-                "id=" + id +
+                "id=" + singerId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +
