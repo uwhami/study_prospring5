@@ -47,10 +47,10 @@ public class DataJpaConfig {
         try{
             EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
             return dbBuilder.setType(EmbeddedDatabaseType.H2)
-                    .addScripts("classpath:/db/schema.sql",
-                            "classpath:db/test-data.sql").build();
+                    .addScripts("classpath:/db/h2/schema.sql",
+                            "classpath:db/h2/test-data.sql").build();
         }catch(Exception e){
-            logger.error("Can not create embedded dataSource Bean!", e);
+            logger.error("==========Can not create embedded dataSource Bean!", e);
             return null;
         }
     }
@@ -74,7 +74,7 @@ public class DataJpaConfig {
     @Bean
     public Properties hibernateProperties() {
         Properties hibernateProp = new Properties();
-        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+//        hibernateProp.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProp.put("hibernate.format_sql", true);
         hibernateProp.put("hibernate.use_sql_comments", true);
         hibernateProp.put("hibernate.show_sql", true);
