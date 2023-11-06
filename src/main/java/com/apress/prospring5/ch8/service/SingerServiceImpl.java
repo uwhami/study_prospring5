@@ -29,7 +29,7 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly = true)
     @Override
     public List<Singer> findAll() {
-        return findAll();
+        return em.createNamedQuery(Singer.FIND_ALL).getResultList();
     }
 
     @Transactional(readOnly = true)
