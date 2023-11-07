@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SingerService {
     List<Singer> findAll();
-    List<Singer> findByFirstName(String firstName);
+    List<Singer> findAllWithAlbum();
     Singer findById(Long id);
     Singer save(Singer singer);
     void delete(Singer singer);

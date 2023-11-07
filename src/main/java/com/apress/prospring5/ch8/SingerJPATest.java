@@ -13,7 +13,6 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class SingerJPATest {
@@ -37,7 +36,10 @@ public class SingerJPATest {
 
     private static void listSingers(List<Singer> singers){
         logger.info("==========Singer list");
-        singers.forEach(s -> logger.info("==========" + s.toString()));
+        for(Singer s : singers){
+            logger.info("==========" + s.toString());
+            s.getAlbums().forEach(album -> logger.info("==========" + album.toString()));
+        }
     }
 
     @Test
@@ -45,6 +47,20 @@ public class SingerJPATest {
         List<Singer> singers = singerService.findAll();
         assertNotNull(singers);
         listSingers(singers);
+    }
+
+    @Test
+    public void testFindAllWithAlbum(){
+        List<Singer> singers = singerService.findAllWithAlbum();
+        assertNotNull(singers);
+        listSingers(singers);
+    }
+
+    @Test
+    public void testFindById(){
+        Singer singer = singerService.findById(1L);
+        assertNotNull(singer);
+        logger.info("==========" + singer.toString());
     }
 
 }
