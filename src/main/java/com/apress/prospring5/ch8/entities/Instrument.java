@@ -1,6 +1,8 @@
 package com.apress.prospring5.ch8.entities;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

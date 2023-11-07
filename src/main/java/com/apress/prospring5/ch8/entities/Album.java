@@ -1,11 +1,12 @@
 package com.apress.prospring5.ch8.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
+import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "album")
