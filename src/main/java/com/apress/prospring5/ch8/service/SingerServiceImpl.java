@@ -34,14 +34,14 @@ public class SingerServiceImpl implements SingerService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Singer> findByFirstName(String firstName) {
-        return findByFirstName(firstName);
+    public List<Singer> findAllWithAlbum() {
+        return em.createNamedQuery(Singer.FIND_ALL_WITH_ALBUM).getResultList();
     }
 
     @Transactional(readOnly = true)
     @Override
     public Singer findById(Long id) {
-        return null;
+        return em.createNamedQuery(Singer.FIND_SINGER_BY_ID, Singer.class).setParameter("id",id).getSingleResult();
     }
 
     @Override
