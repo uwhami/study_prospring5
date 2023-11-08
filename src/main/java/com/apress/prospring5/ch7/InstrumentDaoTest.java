@@ -1,7 +1,6 @@
 package com.apress.prospring5.ch7;
 
 import com.apress.prospring5.ch7.config.AdvancedConfig;
-import com.apress.prospring5.ch7.config.AppConfig;
 import com.apress.prospring5.ch7.dao.InstrumentDao;
 import com.apress.prospring5.ch7.dao.SingerDao;
 import com.apress.prospring5.ch7.entities.Instrument;
