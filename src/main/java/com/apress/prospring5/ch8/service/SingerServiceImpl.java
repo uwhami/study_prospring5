@@ -74,6 +74,10 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly = true)
     @Override
     public List<Singer> findAllByNativeQuery() {
-        return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY, Singer.class).getResultList();
+        /* 단순한 네이티브 쿼리.*/
+        //return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY, Singer.class).getResultList();
+
+        /* SQL ResultSet 매핑으로 네이티브 쿼리 사용 */
+        return em.createNativeQuery(ALL_SINGER_NATIVE_QUERY,"singerResult").getResultList();
     }
 }
