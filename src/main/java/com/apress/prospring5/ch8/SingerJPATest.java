@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class SingerJPATest {
@@ -107,6 +108,13 @@ public class SingerJPATest {
         singerService.delete(singer);
 
         listSingersWithAlbums(singerService.findAllWithAlbum());
+    }
+
+    @Test
+    public void testFindByCriteriaQuery(){
+        List<Singer> singers = singerService.findByCriteriaQuery("John","Mayer");
+        assertEquals(1, singers.size());
+        listSingersWithAlbums(singers);
     }
 
 }
