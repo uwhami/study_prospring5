@@ -54,6 +54,8 @@ public class Singer implements Serializable {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
+    /* orphanRemoval = true 이면 JPA 제공자(하이버네이트)는 데이터베이스에 저장 시
+    * 데이터베이스에는 존재하지만 부모 객체에서는 더이상 찾을 수 없는 모든 고아(orphan) 레코드를 삭제한다. */
     @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<Album> albums = new HashSet<>();
 

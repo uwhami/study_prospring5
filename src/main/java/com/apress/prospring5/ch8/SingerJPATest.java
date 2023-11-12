@@ -41,7 +41,8 @@ public class SingerJPATest {
         logger.info("==========Singer list");
         for(Singer s : singers){
             logger.info("==========" + s.toString());
-            s.getAlbums().forEach(album -> logger.info("\t==========" + album.toString()));
+            s.getAlbums().forEach(album -> logger.info("\t========" + album.toString()));
+            s.getInstruments().forEach(inst -> logger.info("\t========" + inst.toString()));
         }
     }
 
@@ -83,6 +84,20 @@ public class SingerJPATest {
 
         List<Singer> singers = singerService.findAllWithAlbum();
         listSingersWithAlbums(singers);
+    }
+
+    @Test
+    public void testUpdate(){
+        Singer singer = singerService.findById(1L);
+        assertNotNull(singer);
+
+        Album album = singer.getAlbums().stream().filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+        singer.setFirstName("John2");
+        singer.removeAlbum(album);
+        singerService.save(singer);
+
+        listSingersWithAlbums(singerService.findAllWithAlbum());
+
     }
 
 }
