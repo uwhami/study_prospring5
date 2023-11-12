@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * 8.1.3 ORM 매핑에 JPA 애너테이션 사용하기.
  */
-@Service("jpaSingerServiceEmpty")
+@Service("jpaSingerService")
 @Repository /* 클래스에 데이터 액세스 로직이 들어 있음을 나타내며 데이터베이스 벤더가 제공하는 예외를 스프링 자체 DataAccessException 계층으로 변환한다.*/
 @Transactional
 public class SingerServiceImpl implements SingerService {
@@ -44,14 +44,31 @@ public class SingerServiceImpl implements SingerService {
         return em.createNamedQuery(Singer.FIND_SINGER_BY_ID, Singer.class).setParameter("id",id).getSingleResult();
     }
 
+    /**
+     * 8.3.1 Register Data.
+     *
+     * persist 메서드를 호출하면 EntityManager는 엔터티를 데이터베이스에 저장하며,
+     * 추가된 엔터티를 현재 퍼시스턴스 컨텍스트의 관리 대상 인스턴스로 등록한다.
+     */
     @Override
     public Singer save(Singer singer) {
-        return null;
+        if(singer.getId() == null){
+            logger.info("==========Insert new Singer");
+            em.persist(singer);
+        }else{
+            em.merge(singer);
+            logger.info("==========Update singer info");
+        }
+        logger.info("==========Save Singer Info (id:" + singer.getId());
+        return singer;
     }
 
     @Override
     public void delete(Singer singer) {
+        Singer mergedContact = em.merge(singer);
+        em.remove(mergedContact);
 
+        logger.info("==========Deleted Singer(id : " + singer.getId());
     }
 
     @Transactional(readOnly = true)
