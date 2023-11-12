@@ -65,7 +65,10 @@ public class SingerServiceImpl implements SingerService {
 
     @Override
     public void delete(Singer singer) {
+        Singer mergedContact = em.merge(singer);
+        em.remove(mergedContact);
 
+        logger.info("==========Deleted Singer(id : " + singer.getId());
     }
 
     @Transactional(readOnly = true)

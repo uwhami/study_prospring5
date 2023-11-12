@@ -100,4 +100,13 @@ public class SingerJPATest {
 
     }
 
+    @Test
+    public void testDelete(){
+        Singer singer = singerService.findById(1L);
+        assertNotNull(singer);
+        singerService.delete(singer);
+
+        listSingersWithAlbums(singerService.findAllWithAlbum());
+    }
+
 }
