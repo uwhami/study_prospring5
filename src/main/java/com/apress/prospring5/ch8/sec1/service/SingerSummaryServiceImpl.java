@@ -1,6 +1,6 @@
-package com.apress.prospring5.ch8.service;
+package com.apress.prospring5.ch8.sec1.service;
 
-import com.apress.prospring5.ch8.view.SingerSummary;
+import com.apress.prospring5.ch8.sec1.view.SingerSummary;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;

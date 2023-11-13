@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.service;
+package com.apress.prospring5.ch8.sec1.service;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

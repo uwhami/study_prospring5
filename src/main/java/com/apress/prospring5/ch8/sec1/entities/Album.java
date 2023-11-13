@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.entities;
+package com.apress.prospring5.ch8.sec1.entities;
 
 import jakarta.persistence.*;
 

@@ -1,10 +1,9 @@
-package com.apress.prospring5.ch8;
+package com.apress.prospring5.ch8.sec1;
 
-import com.apress.prospring5.ch8.config.DataJpaConfig;
-import com.apress.prospring5.ch8.entities.Singer;
-import com.apress.prospring5.ch8.service.SingerSummaryService;
-import com.apress.prospring5.ch8.service.SingerSummaryUntypeImpl;
-import com.apress.prospring5.ch8.view.SingerSummary;
+import com.apress.prospring5.ch8.sec1.config.DataJpaConfig;
+import com.apress.prospring5.ch8.sec1.service.SingerSummaryService;
+import com.apress.prospring5.ch8.sec1.service.SingerSummaryUntypeImpl;
+import com.apress.prospring5.ch8.sec1.view.SingerSummary;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
-package com.apress.prospring5.ch8.service;
+package com.apress.prospring5.ch8.sec1.service;
 
-import com.apress.prospring5.ch8.Singer_;
-import com.apress.prospring5.ch8.entities.Singer;
+import com.apress.prospring5.ch8.sec1.Singer_;
+import com.apress.prospring5.ch8.sec1.entities.Singer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.*;
@@ -24,6 +24,7 @@ public class SingerServiceImpl implements SingerService {
     final static String ALL_SINGER_NATIVE_QUERY = "select id, first_name, last_name, birth_date, version from singer";
 
     private static Logger logger = LoggerFactory.getLogger(SingerServiceImpl.class);
+
 
     @PersistenceContext
     private EntityManager em;
