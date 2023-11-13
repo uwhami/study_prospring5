@@ -1,7 +1,10 @@
 package com.apress.prospring5.ch8.sec6;
 
+import com.apress.prospring5.ch8.sec6.entities.Album;
 import com.apress.prospring5.ch8.sec6.entities.Singer;
 import com.apress.prospring5.ch8.sec6.config.DataJpaConfig;
+import com.apress.prospring5.ch8.sec6.services.AlbumService;
+import com.apress.prospring5.ch8.sec6.services.SingerService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,11 +25,15 @@ public class SingerDataJPATest {
     private GenericApplicationContext ctx;
     private SingerService singerService;
 
+    private AlbumService albumService;
+
     @Before
     public void setUp(){
         ctx = new AnnotationConfigApplicationContext(DataJpaConfig.class);
         singerService = ctx.getBean(SingerService.class);
+        albumService = ctx.getBean(AlbumService.class);
         assertNotNull(singerService);
+        assertNotNull(albumService);
     }
 
     @After
@@ -69,6 +76,13 @@ public class SingerDataJPATest {
         List<Singer> singers = singerService.findByFirstNameAndLastName("John", "Mayer");
         assertTrue(singers.size() > 0);
         listSingersWithoutAlbums(singers);
+    }
+
+    @Test
+    public void testFindAlbumByTitle(){
+        List<Album> albums = albumService.findByTitle("The");
+        assertTrue(albums.size() > 0);
+        albums.forEach(a -> logger.info("==========" + a.toString()));
     }
 
 }
