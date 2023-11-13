@@ -1,9 +1,9 @@
-package com.apress.prospring5.ch8;
+package com.apress.prospring5.ch8.sec1;
 
-import com.apress.prospring5.ch8.config.DataJpaConfig;
-import com.apress.prospring5.ch8.entities.Album;
-import com.apress.prospring5.ch8.entities.Singer;
-import com.apress.prospring5.ch8.service.SingerService;
+import com.apress.prospring5.ch8.sec1.config.DataJpaConfig;
+import com.apress.prospring5.ch8.sec1.entities.Album;
+import com.apress.prospring5.ch8.sec1.entities.Singer;
+import com.apress.prospring5.ch8.sec1.service.SingerService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,8 +16,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class SingerJPATest {
 
@@ -47,11 +46,18 @@ public class SingerJPATest {
         }
     }
 
+    private static void listSingersWithoutAlbums(List<Singer> singers){
+        logger.info("==========Singer list");
+        for(Singer s : singers){
+            logger.info("==========" + s.toString());
+        }
+    }
+
     @Test
     public void testFindAll(){
         List<Singer> singers = singerService.findAll();
         assertNotNull(singers);
-        listSingersWithAlbums(singers);
+        listSingersWithoutAlbums(singers);
     }
 
     @Test
@@ -116,5 +122,14 @@ public class SingerJPATest {
         assertEquals(1, singers.size());
         listSingersWithAlbums(singers);
     }
+
+//    @Test
+//    public void testFindByFirstName(){
+//        List<Singer> singers = singerService.findByFirstName("John");
+//        assertTrue(singers.size() > 0);
+//        listSingersWithAlbums(singers);
+//    }
+
+
 
 }

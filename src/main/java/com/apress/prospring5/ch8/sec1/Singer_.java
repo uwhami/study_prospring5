@@ -1,7 +1,9 @@
-package com.apress.prospring5.ch8;
+package com.apress.prospring5.ch8.sec1;
 
 
-import com.apress.prospring5.ch8.entities.*;
+import com.apress.prospring5.ch8.sec1.entities.Album;
+import com.apress.prospring5.ch8.sec1.entities.Instrument;
+import com.apress.prospring5.ch8.sec1.entities.Singer;
 import jakarta.annotation.Generated;
 import jakarta.persistence.metamodel.SetAttribute;
 import jakarta.persistence.metamodel.SingularAttribute;

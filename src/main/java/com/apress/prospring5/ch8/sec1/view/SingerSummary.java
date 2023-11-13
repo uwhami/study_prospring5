@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.view;
+package com.apress.prospring5.ch8.sec1.view;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.config;
+package com.apress.prospring5.ch8.sec1.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.slf4j.Logger;
@@ -35,6 +35,7 @@ import java.util.Properties;
  * 이 방법은 DataSource 주입과 로컬 및 분산 트랜잭션 참여가 가능하다.
  * 아래는 자바구성 클래스로 해당 내용을 구성했다.
  */
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.apress.prospring5.ch8"})
@@ -63,7 +64,7 @@ public class DataJpaConfig {
     @Bean
     public EntityManagerFactory entityManagerFactory(){
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch8.entities");
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch8.sec1.entities");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaProperties(hibernateProperties());
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
