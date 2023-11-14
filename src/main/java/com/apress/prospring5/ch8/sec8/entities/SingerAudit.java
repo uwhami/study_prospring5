@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.sec6.entities;
+package com.apress.prospring5.ch8.sec8.entities;
 
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedBy;

@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.sec6.config;
+package com.apress.prospring5.ch8.sec8.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.slf4j.Logger;
@@ -22,8 +22,9 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.apress.prospring5.ch8.sec6"})
-@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch8.sec6"})
+@ComponentScan(basePackages = {"com.apress.prospring5.ch8.sec8"})
+@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch8.sec8"})
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")    //JPA
 public class DataJpaConfig {
 
     private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
@@ -49,7 +50,7 @@ public class DataJpaConfig {
     @Bean
     public EntityManagerFactory entityManagerFactory(){
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch8.sec6.entities");
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch8.sec8.entities");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaProperties(hibernateProperties());
         factoryBean.setJpaVendorAdapter(jpaVendorAdapter());

@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch8.sec6;
+package com.apress.prospring5.ch8.sec8;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
