@@ -68,11 +68,7 @@ dependencies {
 	implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 	implementation group: 'org.springframework', name: 'spring-tx', version: '6.0.13'
 	compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
-//	annotationProcessor group: 'org.hibernate.orm', name: 'hibernate-jpamodelgen', version: '6.3.1.Final'
-//	annotationProcessor group: 'com.querydsl', name: 'querydsl-apt', version: '5.0.0'
-//	annotationProcessor group: 'com.querydsl', name: 'querydsl-jpa', version: '5.0.0'
-//	annotationProcessor group: 'com.querydsl', name: 'querydsl-core', version: '5.0.0'
-//	implementation group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.2.Final'
+	implementation group: 'org.springframework', name: 'spring-aspects', version: '6.0.13'
 
 
 }

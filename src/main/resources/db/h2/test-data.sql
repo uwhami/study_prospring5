@@ -17,3 +17,8 @@ insert into instrument (instrument_id) values ('Synthesizer');
 insert into singer_instrument(singer_id, instrument_id) values (1, 'Guitar');
 insert into singer_instrument(singer_id, instrument_id) values (1, 'Piano');
 insert into singer_instrument(singer_id, instrument_id) values (2, 'Guitar');
+
+-- Added in chapter8.8.1 : Tracking changes in the entity class
+insert into singer_audit (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16');
+insert into singer_audit (first_name, last_name, birth_date) values ('Eric', 'Clapton', '1945-03-30');
+insert into singer_audit (first_name, last_name, birth_date) values ('John', 'Butler', '1975-04-01');
