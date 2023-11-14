@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch8.sec8.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.envers.Audited;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -17,6 +18,7 @@ import java.util.Date;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "singer_audit")
+@Audited    //hibernate envers 기능 : 엔터티 버전 관리와 이력 조회를 가능하게 함. 저장하지 않으려면 @NotAudited 애너테이션을 적용해야 한다.
 public class SingerAudit implements Serializable {
 
     @Id

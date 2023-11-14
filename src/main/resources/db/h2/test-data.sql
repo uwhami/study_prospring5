@@ -22,3 +22,7 @@ insert into singer_instrument(singer_id, instrument_id) values (2, 'Guitar');
 insert into singer_audit (first_name, last_name, birth_date) values ('John', 'Mayer', '1977-10-16');
 insert into singer_audit (first_name, last_name, birth_date) values ('Eric', 'Clapton', '1945-03-30');
 insert into singer_audit (first_name, last_name, birth_date) values ('John', 'Butler', '1975-04-01');
+
+insert into singer_audit_h (first_name, last_name, birth_date, AUDIT_REVISION) values ('John', 'Mayer', '1977-10-16', 1);
+insert into singer_audit_h (first_name, last_name, birth_date, AUDIT_REVISION) values ('Eric', 'Clapton', '1945-03-30', 1);
+insert into singer_audit_h (first_name, last_name, birth_date, AUDIT_REVISION) values ('John', 'Butler', '1975-04-01', 1);

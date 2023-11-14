@@ -25,9 +25,9 @@ import java.util.Properties;
 @ComponentScan(basePackages = {"com.apress.prospring5.ch8.sec8"})
 @EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch8.sec8"})
 @EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")    //JPA
-public class DataJpaConfig {
+public class AuditConfig {
 
-    private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(AuditConfig.class);
 
     @Bean
     public DataSource dataSource(){
