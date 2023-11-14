@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
@@ -23,6 +24,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.apress.prospring5.ch8.sec6"})
 @EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch8.sec6"})
+@EnableJpaAuditing(auditorAwareRef = "auditorAwareBean")    //JPA 감사 기능을 활성화 하는 애너테이션
 public class DataJpaConfig {
 
     private static Logger logger = LoggerFactory.getLogger(DataJpaConfig.class);
