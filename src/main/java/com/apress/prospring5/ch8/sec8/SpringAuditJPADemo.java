@@ -1,9 +1,8 @@
-package com.apress.prospring5.ch8.sec6;
+package com.apress.prospring5.ch8.sec8;
 
-import com.apress.prospring5.ch8.sec6.config.DataJpaConfig;
-import com.apress.prospring5.ch8.sec6.entities.SingerAudit;
-import com.apress.prospring5.ch8.sec6.repos.SingerAuditRepository;
-import com.apress.prospring5.ch8.sec6.services.SingerAuditService;
+import com.apress.prospring5.ch8.sec8.config.DataJpaConfig;
+import com.apress.prospring5.ch8.sec8.entities.SingerAudit;
+import com.apress.prospring5.ch8.sec8.services.SingerAuditService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;

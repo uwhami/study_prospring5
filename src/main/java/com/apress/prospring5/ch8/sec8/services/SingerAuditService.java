@@ -1,6 +1,6 @@
-package com.apress.prospring5.ch8.sec6.services;
+package com.apress.prospring5.ch8.sec8.services;
 
-import com.apress.prospring5.ch8.sec6.entities.SingerAudit;
+import com.apress.prospring5.ch8.sec8.entities.SingerAudit;
 
 import java.util.List;
 
