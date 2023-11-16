@@ -70,6 +70,7 @@ dependencies {
 	compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '6.0.0'
 	implementation group: 'org.springframework', name: 'spring-aspects', version: '6.0.13'
 	implementation group: 'org.hibernate.orm', name: 'hibernate-envers', version: '6.4.0.CR1'
+	implementation group: 'org.jboss.narayana.jta', name: 'jta', version: '7.0.0.Final'
 
 
 

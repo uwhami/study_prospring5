@@ -2,7 +2,6 @@ package com.apress.prospring5.ch8.sec6.services;
 
 import com.apress.prospring5.ch8.sec6.entities.Singer;
 import com.apress.prospring5.ch8.sec6.repos.SingerRepository;
-import com.apress.prospring5.ch8.sec6.services.SingerService;
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
