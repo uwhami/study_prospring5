@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch9.config;
+package com.apress.prospring5.ch9.sec4.config;
 
 
 import jakarta.persistence.EntityManagerFactory;
@@ -22,7 +22,7 @@ import java.util.Properties;
  * ch9. 데이터 접근 빈만 포함되어 있는 클래스
  */
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch9.repos"})
+@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch9.sec4.repos"})
 @PropertySource("classpath:db/jdbc.properties")
 public class DataJpaConfig {
 
@@ -85,7 +85,7 @@ public class DataJpaConfig {
     @Bean
     public EntityManagerFactory entityManagerFactory(){
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch9.entities");
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch9.sec4.entities");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaProperties(hibernateProperties());
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
