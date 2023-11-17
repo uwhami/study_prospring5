@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch9.entities;
+package com.apress.prospring5.ch9.sec4.entities;
 
 
 

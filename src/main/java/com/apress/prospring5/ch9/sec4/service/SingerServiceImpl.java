@@ -1,8 +1,8 @@
-package com.apress.prospring5.ch9.service;
+package com.apress.prospring5.ch9.sec4.service;
 
 
-import com.apress.prospring5.ch9.entities.Singer;
-import com.apress.prospring5.ch9.repos.SingerRepository;
+import com.apress.prospring5.ch9.sec4.entities.Singer;
+import com.apress.prospring5.ch9.sec4.repos.SingerRepository;
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service("singerService")
-@Transactional
+//@Transactional
 public class SingerServiceImpl implements SingerService {
 
     @Autowired

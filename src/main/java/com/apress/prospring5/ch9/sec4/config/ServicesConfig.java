@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch9.config;
+package com.apress.prospring5.ch9.sec4.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

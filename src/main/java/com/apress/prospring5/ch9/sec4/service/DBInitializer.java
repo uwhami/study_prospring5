@@ -1,11 +1,11 @@
-package com.apress.prospring5.ch9.service;
+package com.apress.prospring5.ch9.sec4.service;
 
 
-import com.apress.prospring5.ch9.entities.Album;
-import com.apress.prospring5.ch9.entities.Instrument;
-import com.apress.prospring5.ch9.entities.Singer;
-import com.apress.prospring5.ch9.repos.InstrumentRepository;
-import com.apress.prospring5.ch9.repos.SingerRepository;
+import com.apress.prospring5.ch9.sec4.entities.Album;
+import com.apress.prospring5.ch9.sec4.entities.Instrument;
+import com.apress.prospring5.ch9.sec4.entities.Singer;
+import com.apress.prospring5.ch9.sec4.repos.InstrumentRepository;
+import com.apress.prospring5.ch9.sec4.repos.SingerRepository;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

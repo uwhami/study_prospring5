@@ -56,6 +56,9 @@ dependencies {
 	implementation group: 'org.hsqldb', name: 'hsqldb'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-logging'
 	implementation group: 'org.slf4j', name: 'jul-to-slf4j'
+	testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.11'
+	implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.4.11'
+
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 	implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.1.Final'
 	implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '6.0.0.Alpha7', ext: 'pom'
