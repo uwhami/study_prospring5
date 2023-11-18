@@ -16,15 +16,15 @@
     <logger name="org.springframework.jdbc" level="debug"/>
     <logger name="org.springframework" level="off" />
 
-    <logger name="org.springframework.orm.jpa" level="debug"/>
-    <logger name="org.springframework.transaction" level="debug" />
-    <logger name="org.hibernate.SQL" level="debug" />
+    <logger name="org.springframework.orm.jpa" level="trace"/>
+    <logger name="org.springframework.transaction" level="trace" />
+    <logger name="org.hibernate.SQL" level="trace" />
 
     <logger name="org.hibernate.type" level="TRACE" />
 
-    <logger name="org.hibernate.transaction.JDBCTransaction" level="DEBUG"/>
-    <logger name="org.hibernate.jdbc.ConnectionManager" level="DEBUG"/>
-    <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="DEBUG"/>
+    <logger name="org.hibernate.transaction.JDBCTransaction" level="trace"/>
+    <logger name="org.hibernate.jdbc.ConnectionManager" level="trace"/>
+    <logger name="org.springframework.orm.jpa.JpaTransactionManager" level="trace"/>
 
 
     <root level ="debug">
