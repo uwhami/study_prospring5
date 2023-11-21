@@ -1,12 +1,10 @@
 package com.apress.prospring5.ch9.sec6.config;
 
-
-
-
 import com.atomikos.icatch.config.UserTransactionService;
 import com.atomikos.icatch.config.UserTransactionServiceImp;
 import com.atomikos.icatch.jta.UserTransactionImp;
 import com.atomikos.icatch.jta.UserTransactionManager;
+import jakarta.transaction.SystemException;
 import jakarta.transaction.TransactionManager;
 import jakarta.transaction.UserTransaction;
 import org.slf4j.Logger;
@@ -47,14 +45,14 @@ public class ServicesConfig {
 
     @Bean
     @DependsOn("userTransactionService")
-    public UserTransaction userTransaction(){
+    public UserTransaction userTransaction() throws SystemException {
         UserTransactionImp ut = new UserTransactionImp();
         ut.setTransactionTimeout(300);
         return (UserTransaction) ut;
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager(){
+    public PlatformTransactionManager transactionManager() throws SystemException {
         JtaTransactionManager ptm = new JtaTransactionManager();
         ptm.setTransactionManager((TransactionManager) atomikosTransactionManager());
         ptm.setUserTransaction(userTransaction());
