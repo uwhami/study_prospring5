@@ -34,7 +34,7 @@ public class XAJpaConfig {
             AtomikosDataSourceBean dataSource = new AtomikosDataSourceBean();
             dataSource.setUniqueResourceName("XADBMSA");
             dataSource.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
-            dataSource.setXaDataSource((XADataSource) xsAProperties());
+            dataSource.setXaProperties(xsAProperties());
             dataSource.setPoolSize(1);
             return dataSource;
         }catch (Exception e){
@@ -59,9 +59,9 @@ public class XAJpaConfig {
             AtomikosDataSourceBean dataSource = new AtomikosDataSourceBean();
             dataSource.setUniqueResourceName("XADBMSB");
             dataSource.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
-            dataSource.setXaDataSource((XADataSource) xsBProperties());
+            dataSource.setXaProperties(xsBProperties());
             dataSource.setPoolSize(1);
-            return dataSource;
+            return (DataSource) dataSource;
         }catch (Exception e){
             logger.error("========== Can not create Populator DataSource", e);
             return null;
