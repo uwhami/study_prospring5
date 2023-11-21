@@ -11,7 +11,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
-import javax.sql.XADataSource;
 import java.util.Properties;
 
 import static org.hibernate.cfg.AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS;
@@ -61,7 +60,7 @@ public class XAJpaConfig {
             dataSource.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
             dataSource.setXaProperties(xsBProperties());
             dataSource.setPoolSize(1);
-            return (DataSource) dataSource;
+            return dataSource;
         }catch (Exception e){
             logger.error("========== Can not create Populator DataSource", e);
             return null;
