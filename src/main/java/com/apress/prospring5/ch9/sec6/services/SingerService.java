@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch9.sec6.service;
+package com.apress.prospring5.ch9.sec6.services;
 
 import com.apress.prospring5.ch9.sec6.entities.Singer;
 

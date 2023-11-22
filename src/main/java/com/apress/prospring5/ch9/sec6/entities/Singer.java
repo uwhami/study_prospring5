@@ -9,7 +9,12 @@ import java.util.Set;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-
+/**
+ * 9.4.2 예제 데이터 모델과 공통 클래스.
+ *
+ * 하이버네이트의 hibernate.hbm2ddl.auto 프로퍼티의 값을 create-drop 으로 설정하면 테이블을 생성하는 SQL 스크립트가 필요하지 않으며
+ * 매번 테스트를 실행할 때마다 초기화된 테이블을 사용할 수 있다.
+ */
 @Entity
 @Table(name = "singer")
 @NamedQueries({
@@ -43,8 +48,9 @@ public class Singer implements Serializable {
     @OneToMany(mappedBy = "singer", cascade=CascadeType.ALL, orphanRemoval=true)
     private Set<Album> albums = new HashSet<>();
 
+
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -52,7 +58,7 @@ public class Singer implements Serializable {
     }
 
     public int getVersion() {
-        return this.version;
+        return version;
     }
 
     public void setVersion(int version) {
@@ -60,7 +66,7 @@ public class Singer implements Serializable {
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -68,7 +74,7 @@ public class Singer implements Serializable {
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
@@ -76,20 +82,19 @@ public class Singer implements Serializable {
     }
 
     public Date getBirthDate() {
-        return this.birthDate;
+        return birthDate;
     }
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
-
     public Set<Album> getAlbums() {
-        return this.albums;
+        return albums;
     }
 
     public void setAlbums(Set<Album> albums) {
-     this.albums = albums;
+        this.albums = albums;
     }
 
     public boolean addAlbum(Album album) {
@@ -97,13 +102,15 @@ public class Singer implements Serializable {
         return getAlbums().add(album);
     }
 
-    public void removeAlbum(Album album) {
-        getAlbums().remove(album);
-    }
 
     @Override
     public String toString() {
-        return "Singer - 아이디: " + id + ", 이름: " + firstName
-            + ", 성: " + lastName + ", 생일: " + birthDate;
+        return "==========Singer{" +
+                "id=" + id +
+                ", version=" + version +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 }

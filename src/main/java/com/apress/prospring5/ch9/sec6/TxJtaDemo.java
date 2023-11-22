@@ -3,7 +3,7 @@ package com.apress.prospring5.ch9.sec6;
 import com.apress.prospring5.ch9.sec6.config.ServicesConfig;
 import com.apress.prospring5.ch9.sec6.config.XAJpaConfig;
 import com.apress.prospring5.ch9.sec6.entities.Singer;
-import com.apress.prospring5.ch9.sec6.service.SingerService;
+import com.apress.prospring5.ch9.sec6.services.SingerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
