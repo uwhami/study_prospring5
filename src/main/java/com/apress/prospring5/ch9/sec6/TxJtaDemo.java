@@ -1,7 +1,8 @@
 package com.apress.prospring5.ch9.sec6;
 
 import com.apress.prospring5.ch9.sec6.config.ServicesConfig;
-import com.apress.prospring5.ch9.sec6.config.XAJpaConfig;
+import com.apress.prospring5.ch9.sec6.config.XAJpaConfigA;
+import com.apress.prospring5.ch9.sec6.config.XAJpaConfigB;
 import com.apress.prospring5.ch9.sec6.entities.Singer;
 import com.apress.prospring5.ch9.sec6.services.SingerService;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ public class TxJtaDemo {
     private static Logger logger = LoggerFactory.getLogger(TxJtaDemo.class);
 
     public static void main(String[] args) {
-        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(ServicesConfig.class,XAJpaConfig.class);
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(ServicesConfig.class, XAJpaConfigA.class, XAJpaConfigB.class);
         SingerService singerService = ctx.getBean(SingerService.class);
         Singer singer = new Singer();
         singer.setFirstName("John");

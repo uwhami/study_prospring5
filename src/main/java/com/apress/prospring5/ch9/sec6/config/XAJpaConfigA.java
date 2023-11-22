@@ -21,10 +21,10 @@ import static org.hibernate.cfg.SchemaToolingSettings.HBM2DDL_AUTO;
 import static org.hibernate.cfg.TransactionSettings.*;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.apress.psospring5.ch9.sec6", entityManagerFactoryRef = "emfA")
-public class XAJpaConfig {
+@EnableJpaRepositories(basePackages = "com.apress.prospring5.ch9.sec6", entityManagerFactoryRef = "emfA")
+public class XAJpaConfigA {
 
-    private static Logger logger = LoggerFactory.getLogger(XAJpaConfig.class);
+    private static Logger logger = LoggerFactory.getLogger(XAJpaConfigA.class);
 
 
     @Bean(initMethod = "init", destroyMethod = "close")
@@ -51,30 +51,6 @@ public class XAJpaConfig {
         return xaProp;
     }
 
-    @SuppressWarnings("unchecked")
-    @Bean(initMethod = "init", destroyMethod = "close")
-    public DataSource dataSourceB(){
-        try{
-            AtomikosDataSourceBean dataSource = new AtomikosDataSourceBean();
-            dataSource.setUniqueResourceName("XADBMSB");
-            dataSource.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
-            dataSource.setXaProperties(xsBProperties());
-            dataSource.setPoolSize(1);
-            return dataSource;
-        }catch (Exception e){
-            logger.error("========== Can not create Populator DataSource", e);
-            return null;
-        }
-    }
-
-    @Bean
-    public Properties xsBProperties(){
-        Properties xaProp = new Properties();
-        xaProp.put("databaseName", "musicdb_b");
-        xaProp.put("user", "prospring5_B");
-        xaProp.put("password", "prospring5_B");
-        return xaProp;
-    }
 
     @Bean
     public Properties hibernateProperties() {
@@ -111,16 +87,5 @@ public class XAJpaConfig {
     }
 
 
-    @Bean
-    public EntityManagerFactory emfB() {
-        LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch9.sec6.entities");
-        factoryBean.setDataSource(dataSourceB());
-        factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factoryBean.setJpaProperties(hibernateProperties());
-        factoryBean.setPersistenceUnitName("emfB");
-        factoryBean.afterPropertiesSet();
-        return factoryBean.getObject();
-    }
 
 }
