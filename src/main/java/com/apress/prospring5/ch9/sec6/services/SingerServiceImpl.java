@@ -6,10 +6,12 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service("singerService")
 @Transactional
 public class SingerServiceImpl implements SingerService{
 
@@ -36,9 +38,9 @@ public class SingerServiceImpl implements SingerService{
         singerB.setBirthDate(singer.getBirthDate());
         if (singer.getId() == null) {
             emA.persist(singer);
-            if(true) {
-                throw new JpaSystemException(new PersistenceException("==========Simulation of wrong situation 잘못된 상황의 시뮬레이션"));
-            }
+//            if(true) {
+//                throw new JpaSystemException(new PersistenceException("==========Simulation of wrong situation 잘못된 상황의 시뮬레이션"));
+//            }
             emB.persist(singerB);
         } else {
             emA.merge(singer);
