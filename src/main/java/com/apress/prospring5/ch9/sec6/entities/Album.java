@@ -1,15 +1,15 @@
 package com.apress.prospring5.ch9.sec6.entities;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "album")
-public class Album implements Serializable {
+public class Album {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
@@ -31,16 +31,8 @@ public class Album implements Serializable {
     @JoinColumn(name = "SINGER_ID")
     private Singer singer;
 
-    public Album() {
-    }
-
-    public Album(String title, Date releaseDate) {
-        this.title = title;
-        this.releaseDate = releaseDate;
-    }
-
     public Long getId() {
-        return this.id; 
+        return id;
     }
 
     public void setId(Long id) {
@@ -48,7 +40,7 @@ public class Album implements Serializable {
     }
 
     public int getVersion() {
-        return this.version;
+        return version;
     }
 
     public void setVersion(int version) {
@@ -56,15 +48,15 @@ public class Album implements Serializable {
     }
 
     public String getTitle() {
-        return this.title;
-    } 
+        return title;
+    }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
     public Date getReleaseDate() {
-        return this.releaseDate;
+        return releaseDate;
     }
 
     public void setReleaseDate(Date releaseDate) {
@@ -72,7 +64,7 @@ public class Album implements Serializable {
     }
 
     public Singer getSinger() {
-        return this.singer;
+        return singer;
     }
 
     public void setSinger(Singer singer) {
@@ -81,28 +73,12 @@ public class Album implements Serializable {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return String.format("Album - 아이디: %d, Singer 아이디: %d, 타이틀: %s, 출시일: %s",
-                id, singer.getId(), title, sdf.format(releaseDate));
-    }
-
-    @Override public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        if (!super.equals(o))
-            return false;
-        Album album = (Album) o;
-        if (title != null ? !title.equals(album.title) : album.title != null)
-            return false;
-        return releaseDate != null ? releaseDate.equals(album.releaseDate) : album.releaseDate == null;
-    }
-
-    @Override public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (releaseDate != null ? releaseDate.hashCode() : 0);
-        return result;
+        return "==========Album{" +
+                "id=" + id +
+                ", version=" + version +
+                ", title='" + title + '\'' +
+                ", releaseDate=" + releaseDate +
+                ", singer=" + singer +
+                '}';
     }
 }

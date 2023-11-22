@@ -1,13 +1,16 @@
-package com.apress.prospring5.ch9.sec6.service;
+package com.apress.prospring5.ch9.sec6.services;
 
 import com.apress.prospring5.ch9.sec6.entities.Singer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceException;
 import org.springframework.orm.jpa.JpaSystemException;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public class SingerServiceImpl implements SingerService{
 
     @PersistenceContext(unitName = "emfA")

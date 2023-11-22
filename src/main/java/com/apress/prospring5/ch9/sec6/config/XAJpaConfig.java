@@ -21,7 +21,7 @@ import static org.hibernate.cfg.SchemaToolingSettings.HBM2DDL_AUTO;
 import static org.hibernate.cfg.TransactionSettings.*;
 
 @Configuration
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "com.apress.psospring5.ch9.sec6", entityManagerFactoryRef = "emfA")
 public class XAJpaConfig {
 
     private static Logger logger = LoggerFactory.getLogger(XAJpaConfig.class);
@@ -46,8 +46,8 @@ public class XAJpaConfig {
     public Properties xsAProperties(){
         Properties xaProp = new Properties();
         xaProp.put("databaseName", "musicdb_a");
-        xaProp.put("user", "prospring5_a");
-        xaProp.put("password", "prospring5_a");
+        xaProp.put("user", "prospring5_A");
+        xaProp.put("password", "prospring5_A");
         return xaProp;
     }
 
@@ -71,8 +71,8 @@ public class XAJpaConfig {
     public Properties xsBProperties(){
         Properties xaProp = new Properties();
         xaProp.put("databaseName", "musicdb_b");
-        xaProp.put("user", "prospring5_b");
-        xaProp.put("password", "prospring5_b");
+        xaProp.put("user", "prospring5_B");
+        xaProp.put("password", "prospring5_B");
         return xaProp;
     }
 
@@ -87,7 +87,7 @@ public class XAJpaConfig {
 
         hibernateProp.put(AUTOCOMMIT, false);
         hibernateProp.put(FLUSH_BEFORE_COMPLETION, false);
-        hibernateProp.put(DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+//        hibernateProp.put(DIALECT, "org.hibernate.dialect.MySQL5Dialect");
         // users/schemas가 먼저 생성돼 었을 경우에만 동작하며, 이를 위해 use ddl.sql을 사용함
         hibernateProp.put(HBM2DDL_AUTO, "create-drop");
         hibernateProp.put(SHOW_SQL, true);

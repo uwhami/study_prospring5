@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.apress.prospring5.ch9.sec6.services")
+@ComponentScan(basePackages = "com.apress.prospring5.ch9.sec6")
 public class ServicesConfig {
 
     private Logger logger = LoggerFactory.getLogger(ServicesConfig.class);
@@ -52,7 +52,7 @@ public class ServicesConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager() throws SystemException {
+    public PlatformTransactionManager transactionManager() throws SystemException{
         JtaTransactionManager ptm = new JtaTransactionManager();
         ptm.setTransactionManager((TransactionManager) atomikosTransactionManager());
         ptm.setUserTransaction(userTransaction());
