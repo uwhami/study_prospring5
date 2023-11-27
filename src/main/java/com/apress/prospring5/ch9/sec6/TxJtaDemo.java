@@ -12,6 +12,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class TxJtaDemo {
 
@@ -30,6 +31,16 @@ public class TxJtaDemo {
         }  else {
             logger.error("==========  --> Can not saved Singer!!");
         }
+
+
+        //Check save from two db.
+        List<Singer> singers = singerService.findAll();
+        if(singers.size()!=2){
+            logger.error("========== Something wrong.");
+        }else{
+            logger.info("========== Singers from DB : " + singers);
+        }
+        ctx.close();
     }
 
 }
