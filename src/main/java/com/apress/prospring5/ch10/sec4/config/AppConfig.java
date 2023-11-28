@@ -13,7 +13,7 @@ import java.net.URL;
 import java.util.Locale;
 
 @Configuration
-@ComponentScan(basePackages = {"com.apress.prospring5.ch10.sec4","com.apress.prospring5.ch10.sec3"})
+@ComponentScan(basePackages = {"com.apress.prospring5.ch10.sec4"})
 public class AppConfig {
 
     @Autowired
