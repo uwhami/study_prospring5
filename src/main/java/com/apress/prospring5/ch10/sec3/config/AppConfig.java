@@ -1,6 +1,7 @@
 package com.apress.prospring5.ch10.sec3.config;
 
 import com.apress.prospring5.ch10.sec3.Singer;
+import com.apress.prospring5.ch10.sec3.SingerToAnotherSingerConverter;
 import com.apress.prospring5.ch10.sec3.StringToDateTimeConverter;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,8 +47,9 @@ public class AppConfig {
     @Bean
     public ConversionServiceFactoryBean conversionService(){
         ConversionServiceFactoryBean conversionServiceFactoryBean = new ConversionServiceFactoryBean();
-        Set<Converter<String,DateTime>> convs = new HashSet<>();
+        Set<Converter> convs = new HashSet<>();
         convs.add(converter());
+        convs.add(singerConverter());
         conversionServiceFactoryBean.setConverters(convs);
         conversionServiceFactoryBean.afterPropertiesSet();
         return conversionServiceFactoryBean;
@@ -55,10 +57,16 @@ public class AppConfig {
 
     @Bean
     StringToDateTimeConverter converter(){
-        StringToDateTimeConverter conv = new StringToDateTimeConverter();
+//        StringToDateTimeConverter conv = new StringToDateTimeConverter();
 //        conv.setDatePattern(dateFormatPattern);
-        conv.init();
-        return conv;
+//        conv.init();
+//        return conv;
+        return new StringToDateTimeConverter();
+    }
+
+    @Bean
+    SingerToAnotherSingerConverter singerConverter(){
+        return new SingerToAnotherSingerConverter();
     }
 
 }
