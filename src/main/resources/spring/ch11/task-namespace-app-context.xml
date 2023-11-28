@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.springframework.org/schema/task
+						   http://www.springframework.org/schema/task/spring-task.xsd
+                          ">
+
+    <task:scheduler id="carScheduler" pool-size="10" />
+
+    <!-- fixed-delay 애트리뷰트는 스프링이 TaskScheduler가 사용할 Trigger 구현체로 PeriodicTrigger 인스턴스를 생성하게 한다. -->
+    <task:scheduled-tasks scheduler="carScheduler">
+        <task:scheduled ref="carService" method="updateCarAgeJob" fixed-delay="10000"/>
+    </task:scheduled-tasks>
+
+</beans>

@@ -94,7 +94,7 @@ dependencies {
 	testImplementation group: 'org.jboss.logmanager', name: 'jboss-logmanager', version: '3.0.2.Final'
 
 	implementation group: 'joda-time', name: 'joda-time', version: '2.3'
-//	implementation group: 'org.joda', name: 'joda-convert', version: '2.2.3'
+	implementation group: 'org.jadira.usertype', name: 'usertype.jodatime', version: '2.0.1'
 
 
 
