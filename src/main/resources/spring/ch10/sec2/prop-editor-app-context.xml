@@ -13,7 +13,7 @@
 						   http://www.springframework.org/schema/util/spring-util.xsd
                           ">
 
-    <!-- 10.2 스프링 타입 변환 시스템 -->
+    <!-- 10.2 스프링 타입 변환 시스템 (PropertyEditor) -->
 
     <context:annotation-config />
 
