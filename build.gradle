@@ -93,6 +93,10 @@ dependencies {
 	compileOnly group: 'org.jboss.logging', name: 'jboss-logging-processor', version: '2.2.1.Final'
 	testImplementation group: 'org.jboss.logmanager', name: 'jboss-logmanager', version: '3.0.2.Final'
 
+	implementation group: 'joda-time', name: 'joda-time', version: '2.3'
+	implementation group: 'org.joda', name: 'joda-convert', version: '2.2.3'
+
+
 
 }
 
