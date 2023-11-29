@@ -1,7 +1,7 @@
-package com.apress.prospring5.ch11.services;
+package com.apress.prospring5.ch11.xml_scheduled_task.services;
 
-import com.apress.prospring5.ch11.entities.Car;
-import com.apress.prospring5.ch11.repos.CarRepository;
+import com.apress.prospring5.ch11.xml_scheduled_task.entities.Car;
+import com.apress.prospring5.ch11.xml_scheduled_task.repos.CarRepository;
 import org.assertj.core.util.Lists;
 import org.joda.time.DateTime;
 import org.joda.time.Years;

@@ -95,6 +95,11 @@ dependencies {
 
 	implementation group: 'joda-time', name: 'joda-time', version: '2.3'
 	implementation group: 'org.jadira.usertype', name: 'usertype.jodatime', version: '2.0.1'
+	implementation group: 'org.joda', name: 'joda-convert', version: '2.2.3'
+	implementation group: 'joda-time', name: 'joda-time-hibernate', version: '1.4'
+//	implementation group: 'org.jadira.usertype', name: 'usertype.core', version: '7.0.0.CR1'
+//	implementation group: 'org.jadira.usertype', name: 'usertype.spi', version: '7.0.0.CR1'
+//	implementation group: 'org.jadira.usertype', name: 'usertype.spi-hibernate36', version: '3.2.0.GA'
 
 
 

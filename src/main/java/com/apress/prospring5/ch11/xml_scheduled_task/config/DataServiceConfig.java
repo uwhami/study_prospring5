@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch11.config;
+package com.apress.prospring5.ch11.xml_scheduled_task.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.slf4j.Logger;
@@ -19,8 +19,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch11.repos"})
-@ComponentScan(basePackages = "com.apress.prospring5.ch11")
+@EnableJpaRepositories(basePackages = {"com.apress.prospring5.ch11.xml_scheduled_task.repos"})
+@ComponentScan(basePackages = "com.apress.prospring5.ch11.xml_scheduled_task")
 public class DataServiceConfig {
 
     private static Logger logger = LoggerFactory.getLogger(DataServiceConfig.class);
@@ -41,7 +41,6 @@ public class DataServiceConfig {
         Properties hibernateProp = new Properties();
         hibernateProp.put("hibernate.hbm2ddl.auto","create-drop");
         hibernateProp.put("hibernate.show_sql",true);
-        hibernateProp.put("hibernate.show_sql", true);
         hibernateProp.put("hibernate.max_fetch_depth", 3);
         hibernateProp.put("hibernate.jdbc.batch_size", 10);
         hibernateProp.put("hibernate.jdbc.fetch_size", 50);
@@ -62,10 +61,10 @@ public class DataServiceConfig {
     @Bean
     public EntityManagerFactory entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-        factoryBean.setPackagesToScan("com.apress.prospring5.ch11.entities");
+        factoryBean.setPackagesToScan("com.apress.prospring5.ch11.xml_scheduled_task.entities");
         factoryBean.setDataSource(dataSource());
         factoryBean.setJpaProperties(hibernateProperties());
-        factoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+        factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         factoryBean.afterPropertiesSet();
         return factoryBean.getNativeEntityManagerFactory();
     }

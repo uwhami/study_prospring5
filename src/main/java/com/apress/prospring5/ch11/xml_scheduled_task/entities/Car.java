@@ -1,7 +1,7 @@
-package com.apress.prospring5.ch11.entities;
+package com.apress.prospring5.ch11.xml_scheduled_task.entities;
 
+import com.apress.prospring5.ch11.xml_scheduled_task.converter.StringToDateTimeConverter;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 @Entity
@@ -19,8 +19,8 @@ public class Car {
     @Column(name="MANUFACTURER")
     private String manufacturer;
 
+    @Convert(converter = StringToDateTimeConverter.class)
     @Column(name="MANUFACTURE_DATE")
-    @Convert(converter=org.jadira.usertype.dateandtime.joda.PersistentDateTime.class)
     private DateTime manufactureDate;
 
     @Column(name="AGE")
