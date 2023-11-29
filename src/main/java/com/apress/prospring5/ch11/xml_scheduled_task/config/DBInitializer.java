@@ -1,7 +1,7 @@
-package com.apress.prospring5.ch11.config;
+package com.apress.prospring5.ch11.xml_scheduled_task.config;
 
-import com.apress.prospring5.ch11.entities.Car;
-import com.apress.prospring5.ch11.repos.CarRepository;
+import com.apress.prospring5.ch11.xml_scheduled_task.entities.Car;
+import com.apress.prospring5.ch11.xml_scheduled_task.repos.CarRepository;
 import jakarta.annotation.PostConstruct;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

@@ -1,6 +1,6 @@
-package com.apress.prospring5.ch11.services;
+package com.apress.prospring5.ch11.xml_scheduled_task.services;
 
-import com.apress.prospring5.ch11.entities.Car;
+import com.apress.prospring5.ch11.xml_scheduled_task.entities.Car;
 
 import java.util.List;
 

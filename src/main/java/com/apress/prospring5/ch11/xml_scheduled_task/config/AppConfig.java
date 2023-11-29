@@ -1,4 +1,4 @@
-package com.apress.prospring5.ch11.config;
+package com.apress.prospring5.ch11.xml_scheduled_task.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
