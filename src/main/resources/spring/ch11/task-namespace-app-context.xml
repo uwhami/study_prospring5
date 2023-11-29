@@ -15,7 +15,7 @@
     <!-- fixed-delay 애트리뷰트는 스프링이 TaskScheduler가 사용할 Trigger 구현체로 PeriodicTrigger 인스턴스를 생성하게 한다. -->
     <task:scheduled-tasks scheduler="carScheduler">
 <!--        <task:scheduled ref="carService" method="updateCarAgeJob" fixed-delay="10000"/>-->
-        <!-- 잡이 매 분 마다 실행되도록 설정. -->
+        <!-- 잡이 매 분 마다 실행되도록 설정. cron : 초 분 시 일 월 요일 년도(생략가능) -->
         <task:scheduled ref="carService" method="updateCarAgeJob" cron="0 * * * * *" />
     </task:scheduled-tasks>
 
