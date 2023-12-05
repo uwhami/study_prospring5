@@ -101,7 +101,9 @@ dependencies {
 //	implementation group: 'org.jadira.usertype', name: 'usertype.spi', version: '7.0.0.CR1'
 //	implementation group: 'org.jadira.usertype', name: 'usertype.spi-hibernate36', version: '3.2.0.GA'
 
-
+	implementation group: 'org.springframework', name: 'spring-oxm', version: '6.1.1'
+	implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.3-alpha1'
+	implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.20'
 
 }
 
