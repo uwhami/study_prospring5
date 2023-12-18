@@ -93,8 +93,8 @@ public class WebConfig implements WebMvcConfigurer {
     CookieLocaleResolver localeResolver() {
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
         cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
-        cookieLocaleResolver.setCookieMaxAge(3600);
-        cookieLocaleResolver.setCookieName("locale");
+//        cookieLocaleResolver.setCookieMaxAge(3600);
+//        cookieLocaleResolver.setCookieName("locale");
         return cookieLocaleResolver;
     }
 
@@ -108,7 +108,9 @@ public class WebConfig implements WebMvcConfigurer {
     // <=> <mvc:view-controller .../>
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("singers/list");
+        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/login").setViewName("login");
     }
 
 }
